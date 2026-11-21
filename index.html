@@ -163,6 +163,7 @@
     <p class="section-intro">Vi sender deg en bekreftelse på e-post når vi har mottatt bestillingen.</p>
 
     <form id="order" novalidate>
+      <input type="hidden" name="_subject" value="Ny forhåndsbestilling – Bibelquiz">
       <div class="row">
         <div><label for="navn">Navn</label><input id="navn" name="navn" autocomplete="name" required></div>
         <div><label for="epost">E-post</label><input id="epost" name="epost" type="email" autocomplete="email" required></div>
@@ -223,7 +224,7 @@
   // ---- Innstillinger ----
   const PRIS = "249";
   const KONTAKT_EPOST = "post@bibelspillet.no";
-  const FORMSPREE_ID = "";                // f.eks. "xyzabcd" fra formspree.io
+  const FORMSPREE_ID = "xwlonwrb";
   // -----------------------
 
   document.querySelectorAll("[data-price]").forEach(e => e.textContent = PRIS + " kr");
