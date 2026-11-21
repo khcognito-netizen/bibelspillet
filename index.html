@@ -114,6 +114,7 @@
       <div class="price"><strong data-price>249 kr</strong><span>inkl. mva.</span></div>
       <a class="btn" href="#bestill">Forhåndsbestill nå</a>
       <div class="offer"><b>De 100 første bestillingene får gratis frakt.</b> Du betaler ingenting nå – fakturaen ligger i esken.</div>
+      <p style="margin-top:14px;font-size:15px"><a href="#interesse" style="color:var(--green);font-weight:600">Ikke klar til å bestille? Meld interesse helt uforpliktende →</a></p>
     </div>
     <div class="hero-img">
       <img src="bibelquiz%20(2).webp" alt="Esken til Bibelquiz fra KHC Nordic Pocketserie" width="900" height="1272">
@@ -203,6 +204,40 @@
   </div>
 </section>
 
+<section id="interesse">
+  <div class="wrap">
+    <h2 class="section-title">Meld interesse – helt uforpliktende</h2>
+    <p class="section-intro">Ikke klar til å bestille ennå? Legg igjen navn og e-post, så får du beskjed først når Bibelquiz er klar. Passer også for menigheter, leirer og grupper som vil reservere flere spill.</p>
+
+    <form id="interest" novalidate>
+      <input type="hidden" name="_subject" value="Ny interessemelding – Bibelquiz">
+      <input type="hidden" name="type" value="Uforpliktende interesse">
+      <div class="row">
+        <div><label for="i-navn">Navn</label><input id="i-navn" name="navn" autocomplete="name" required></div>
+        <div><label for="i-epost">E-post</label><input id="i-epost" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="row">
+        <div><label for="i-org">Menighet / organisasjon <span class="opt">(valgfritt)</span></label><input id="i-org" name="organisasjon" placeholder="F.eks. menighet, leir eller skole"></div>
+        <div><label for="i-antall">Omtrent hvor mange?</label>
+          <select id="i-antall" name="antall">
+            <option>1</option><option>2–5</option><option>6–10</option><option>11–25</option><option>Mer enn 25</option>
+          </select>
+        </div>
+      </div>
+      <label for="i-melding">Melding <span class="opt">(valgfritt)</span></label>
+      <textarea id="i-melding" name="melding" placeholder="F.eks. hva spillet skal brukes til"></textarea>
+      <div class="error" id="err2"></div>
+      <button class="btn" type="submit" style="width:100%">Meld interesse</button>
+      <p class="note">Helt uforpliktende – du bestiller ingenting nå.</p>
+    </form>
+
+    <div class="thanks" id="thanks2">
+      <h3>Takk for interessen!</h3>
+      <p>Vi gir deg beskjed så snart Bibelquiz er klar i starten av februar.</p>
+    </div>
+  </div>
+</section>
+
 <section id="vilkar-tekst">
   <div class="wrap">
     <h2 class="section-title">Spørsmål og vilkår</h2>
@@ -269,6 +304,31 @@
       err.style.display = "block";
     }
   });
+</script>
+<script>
+  (function(){
+    const f = document.getElementById("interest");
+    const e = document.getElementById("err2");
+    f.querySelectorAll("input,select,textarea").forEach(el => el.addEventListener("input", () => { e.style.display = "none"; }));
+    f.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const d = Object.fromEntries(new FormData(f).entries());
+      const missing = [];
+      if (!d.navn.trim()) missing.push("navn");
+      if (!/^\S+@\S+\.\S+$/.test(d.email.trim())) missing.push("gyldig e-post");
+      if (missing.length) { e.textContent = "Fyll inn " + missing.join(", ") + "."; e.style.display = "block"; return; }
+      const b = f.querySelector("button"); b.disabled = true; b.textContent = "Sender …";
+      try {
+        const r = await fetch("https://formspree.io/f/" + FORMSPREE_ID, { method: "POST", headers: { "Accept": "application/json" }, body: new FormData(f) });
+        if (!r.ok) throw new Error();
+        f.style.display = "none"; document.getElementById("thanks2").style.display = "block";
+      } catch (x) {
+        b.disabled = false; b.textContent = "Meld interesse";
+        e.textContent = "Noe gikk galt. Prøv igjen, eller send en e-post til " + KONTAKT_EPOST + ".";
+        e.style.display = "block";
+      }
+    });
+  })();
 </script>
 </body>
 </html>
