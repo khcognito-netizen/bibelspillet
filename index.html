@@ -166,7 +166,7 @@
       <input type="hidden" name="_subject" value="Ny forhåndsbestilling – Bibelquiz">
       <div class="row">
         <div><label for="navn">Navn</label><input id="navn" name="navn" autocomplete="name" required></div>
-        <div><label for="epost">E-post</label><input id="epost" name="epost" type="email" autocomplete="email" required></div>
+        <div><label for="epost">E-post</label><input id="epost" name="email" type="email" autocomplete="email" required></div>
       </div>
       <div class="row">
         <div><label for="telefon">Telefon <span class="opt">(valgfritt)</span></label><input id="telefon" name="telefon" type="tel" autocomplete="tel"></div>
@@ -240,7 +240,7 @@
     const d = Object.fromEntries(new FormData(form).entries());
     const missing = [];
     if (!d.navn.trim()) missing.push("navn");
-    if (!/^\S+@\S+\.\S+$/.test(d.epost.trim())) missing.push("gyldig e-post");
+    if (!/^\S+@\S+\.\S+$/.test(d.email.trim())) missing.push("gyldig e-post");
     if (!d.adresse.trim()) missing.push("adresse");
     if (!/^\d{4}$/.test(d.postnr.trim())) missing.push("postnummer (4 siffer)");
     if (!d.sted.trim()) missing.push("sted");
@@ -248,7 +248,7 @@
     if (!document.getElementById("vilkar").checked) { err.textContent = "Kryss av for at du har lest vilkårene."; err.style.display = "block"; return; }
 
     if (!FORMSPREE_ID) {
-      const body = "Forhåndsbestilling Bibelquiz\n\nNavn: " + d.navn + "\nE-post: " + d.epost + "\nTelefon: " + (d.telefon||"") +
+      const body = "Forhåndsbestilling Bibelquiz\n\nNavn: " + d.navn + "\nE-post: " + d.email + "\nTelefon: " + (d.telefon||"") +
         "\nAntall: " + d.antall + "\nAdresse: " + d.adresse + ", " + d.postnr + " " + d.sted + "\nMelding: " + (d.melding||"");
       window.location.href = "mailto:" + KONTAKT_EPOST + "?subject=" + encodeURIComponent("Forhåndsbestilling Bibelquiz – " + d.navn) + "&body=" + encodeURIComponent(body);
       form.style.display = "none"; const t = document.getElementById("thanks"); t.style.display = "block";
