@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bibelquiz – KHC Nordic Pocketserie | Forhåndsbestill</title>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bibelspillet.no/">
+  <meta property="og:title" content="Bibelquiz – Små kort. Store spørsmål.">
+  <meta property="og:description" content="280 bibelspørsmål i lommeformat. Forhåndsbestill nå – levering i starten av februar 2027.">
+  <meta property="og:image" content="https://bibelspillet.no/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Bibelquiz fra KHC Nordic Pocketserie. Spørrespill i lommeformat der alle svar har bibelreferanser. Forhåndsbestill nå – levering i starten av februar 2027.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +46,7 @@
   .price span{color:var(--muted)}
   .offer{margin-top:18px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:0;padding:14px 16px;font-size:16px}
   .hero-img{position:relative;text-align:center}
-  .hero-img img{width:100%;max-width:430px;height:auto;filter:drop-shadow(0 24px 30px rgba(60,40,10,.25));transform:rotate(-2deg)}
+  .hero-img img{width:100%;max-width:360px;height:auto;filter:drop-shadow(0 24px 30px rgba(60,40,10,.25))}
 
   section{padding:64px 0}
   section.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -94,6 +102,38 @@
     form{padding:22px}
     header.top .btn{display:none}
   }
+/* NYTT: quiz */
+
+section.quiz{background:var(--green);color:#F7F1E3}
+section.quiz .section-title{color:#F7F1E3}section.quiz .section-intro{color:#cfdccf}
+.qz{max-width:600px;margin:0 auto;background:var(--red);border-radius:16px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.qz-paper{background:#FBF0D6;border:1.5px solid var(--gold);border-radius:8px;padding:24px;min-height:320px;color:var(--ink)}
+.qz-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.qz-dots{display:flex;gap:6px}.qz-dots i{width:9px;height:9px;border-radius:50%;background:#E4D8BE}
+.qz-dots i.on{background:var(--red)}.qz-dots i.ok{background:var(--green-2)}
+.qz-q{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.qz-num{flex:none;width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;font-family:"Cormorant Garamond",serif;font-weight:700;font-size:24px;display:grid;place-items:center;box-shadow:inset 0 0 0 2px #E7B65E}
+.qz-q p{margin:2px 0 0;font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:700;line-height:1.15;color:var(--ink)}
+.qz-opts{display:grid;gap:9px}
+.qz-opts button{font:inherit;text-align:left;padding:11px 16px;border:1px solid #D6C8A8;background:#fff;border-radius:10px;cursor:pointer;color:var(--ink);transition:.15s}
+.qz-opts button:hover:not(:disabled){border-color:var(--red)}
+.qz-opts button.right{background:#E4F0E4;border-color:var(--green-2);color:var(--green);font-weight:600}
+.qz-opts button.wrong{background:#F8E0DC;border-color:var(--red);color:#8a1f19}
+.qz-opts button:disabled{cursor:default}
+.qz-fact{margin:14px 0 0;color:var(--muted);font-size:16px;min-height:24px}
+.qz-next{margin-top:12px;visibility:hidden}
+.qz-end{text-align:center}
+.qz-score{font-family:"Cormorant Garamond",serif;font-size:64px;font-weight:700;color:var(--red);line-height:1;margin:4px 0}
+.qz-end h3{font-size:30px;margin:4px 0}.qz-end p{color:var(--muted);margin:6px 0 18px}
+.qz-again{display:block;margin:12px auto 0;background:none;border:0;font:inherit;font-size:15px;color:var(--muted);text-decoration:underline;cursor:pointer}
+@media (max-width:820px){.qz-q p{font-size:23px}.qz-paper{padding:18px}}
+.fill{background:#fff1a8;padding:0 4px;border-radius:3px}
+.legal h3{font-size:24px;margin:18px 0 6px}.legal p,.legal li{color:var(--ink);font-size:16px}
+.legal ul{margin:6px 0 0;padding-left:20px}
+.sum{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:15px;margin:0 0 16px}
+footer .legal-links a{margin:0 8px}
+footer .company{margin:10px 0}
+.hero-img .dim{display:block;margin-top:10px;font-size:14px;color:var(--muted);letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -111,14 +151,14 @@
       <p class="sub">Små kort. Store spørsmål.</p>
       <p class="lead">Et spørrespill om tro, kunnskap og undring – i en eske som passer i lomma. Alle svar har bibelreferanser, så du kan slå opp og lese mer. Den første utgivelsen i KHC Nordic Pocketserie.</p>
       <p class="specs">70 kort · 280 spørsmål · lommeformat</p>
-      <div class="price"><strong data-price>249 kr</strong><span>inkl. mva.</span></div>
+      <div class="price"><strong data-price>249 kr</strong><span>per stk + frakt</span></div>
       <p class="specs" style="margin-top:6px"><b>Mengderabatt:</b> 3+ stk 225 kr/stk · 10+ stk 199 kr/stk</p>
       <a class="btn" href="#bestill">Forhåndsbestill nå</a>
       <div class="offer"><b>De 100 første bestillingene får gratis frakt.</b> Du betaler ingenting nå – fakturaen ligger i esken.</div>
       <p style="margin-top:14px;font-size:15px"><a href="#interesse" style="color:var(--green);font-weight:600">Ikke klar til å bestille? Meld interesse helt uforpliktende →</a></p>
     </div>
     <div class="hero-img">
-      <img src="bibelquiz%20(2).webp" alt="Esken til Bibelquiz fra KHC Nordic Pocketserie" width="900" height="1272">
+      <img src="eske.webp" alt="Bibelquiz – esken, 10 × 7,5 × 3 cm" width="440" height="608"><span class="dim">10 × 7,5 × 3 cm</span>
     </div>
   </div>
 </div>
@@ -141,11 +181,14 @@
       <div class="card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.9 6.9L22 9.3l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.9L2 9.3l7.1-.4z"/></svg></div>
         <h3>Først i serien</h3>
-        <p>Bibelquiz er første utgivelse i KHC Nordic Pocketserie – og den første i sitt slag.</p>
+        <p>Bibelquiz er første utgivelse i KHC Nordic Pocketserie – en ny serie med små spill med stort innhold.</p>
       </div>
     </div>
   </div>
 </section>
+
+<section class="quiz" id="test"><div class="wrap"><h2 class="section-title">Test deg selv</h2><p class="section-intro">Seks spørsmål fra spillet. Hvor mange klarer du?</p>
+<div class="qz"><div class="qz-paper" id="qzBox"></div></div></div></section>
 
 <section>
   <div class="wrap">
@@ -188,13 +231,14 @@
       <label for="melding">Melding <span class="opt">(valgfritt)</span></label>
       <textarea id="melding" name="melding" placeholder="F.eks. om bestillingen er en gave"></textarea>
 
-      <div class="check">
+      <div class="sum"><b>Å betale:</b> 249 kr + frakt 79 kr (gratis for de 100 første). Betaling med faktura, som ligger i esken. Forventet levering: starten av februar 2027. Du har 14 dagers angrerett fra du mottar spillet.</div>
+<div class="check">
         <input type="checkbox" id="vilkar" name="vilkar">
-        <label for="vilkar" style="font-weight:400;margin:0">Jeg har lest <a href="#vilkar-tekst">vilkårene for forhåndsbestilling</a>.</label>
+        <label for="vilkar" style="font-weight:400;margin:0">Jeg har lest og godtar <a href="#salgsbetingelser">salgsbetingelsene</a>, inkludert <a href="#angrerett">angrerett</a>, og <a href="#personvern">personvernerklæringen</a>.</label>
       </div>
       <div class="error" id="err"></div>
 
-      <button class="btn" type="submit" style="width:100%">Send forhåndsbestilling</button>
+      <button class="btn" type="submit" style="width:100%">Bestill med plikt til å betale</button>
       <p class="note">Du betaler ingenting nå. Fakturaen kommer i esken.</p>
     </form>
 
@@ -229,7 +273,7 @@
       <textarea id="i-melding" name="melding" placeholder="F.eks. hva spillet skal brukes til"></textarea>
       <div class="error" id="err2"></div>
       <button class="btn" type="submit" style="width:100%">Meld interesse</button>
-      <p class="note">Helt uforpliktende – du bestiller ingenting nå.</p>
+      <p class="note">Helt uforpliktende – du bestiller ingenting nå. Vi bruker opplysningene bare til å kontakte deg om Bibelquiz. Les <a href="#personvern">personvernerklæringen</a>.</p>
     </form>
 
     <div class="thanks" id="thanks2">
@@ -245,17 +289,41 @@
     <p class="section-intro">&nbsp;</p>
     <details open><summary>Når kommer spillet?</summary><p>Vi regner med at Bibelquiz er i Norge i starten av februar 2027. Vi sender ut bestillingene i den rekkefølgen de kom inn, og gir beskjed på e-post når pakken er på vei.</p></details>
     <details><summary>Hvordan betaler jeg?</summary><p>Du betaler ingenting når du forhåndsbestiller. Fakturaen ligger i esken når du får spillet.</p></details>
-    <details><summary>Hva koster frakten?</summary><p>De 100 første bestillingene får gratis frakt. Deretter kommer frakt i tillegg, og prisen står på bekreftelsen du får før vi sender.</p></details>
+    <details><summary>Hva koster frakten?</summary><p>Frakt koster 79 kr per forsendelse, uansett hvor mange spill du bestiller. De 100 første bestillingene får gratis frakt.</p></details>
     <details><summary>Kan jeg avbestille?</summary><p>Ja. Du kan avbestille kostnadsfritt ved å sende oss en e-post før spillet er sendt. Når du har mottatt varen, har du 14 dagers angrerett etter angrerettloven.</p></details>
     <details><summary>Får jeg rabatt hvis jeg kjøper flere?</summary><p>Ja. Kjøper du 3–9 spill, koster de 225 kr per stk. Kjøper du 10 eller flere, koster de 199 kr per stk. Rabatten regnes ut automatisk i bestillingsskjemaet.</p></details>
     <details><summary>Hvordan kontakter jeg dere?</summary><p>Send en e-post til <a href="mailto:post@bibelspillet.no" data-email>post@bibelspillet.no</a>.</p></details>
   </div>
 </section>
 
-<footer>
-  <div class="brand">KHC Nordic</div>
-  <p>Bibelquiz – KHC Nordic Pocketserie · <span data-email-text>post@bibelspillet.no</span></p>
-</footer>
+<section id="salgsbetingelser"><div class="wrap legal"><h2 class="section-title">Salgsbetingelser</h2>
+<p class="section-intro">Gjelder for forhåndsbestilling og kjøp av Bibelquiz fra bibelspillet.no.</p>
+<details><summary>1. Selger</summary><p>Kunnskapshuset Cognito AS, org.nr. 937 493 096, Simonstad 102, 4868 Selåsvatn. E-post: post@bibelspillet.no. KHC Nordic er et varemerke for Kunnskapshuset Cognito AS.</p></details>
+<details><summary>2. Avtalen</summary><p>Avtalen består av disse salgsbetingelsene, opplysningene i bestillingsskjemaet og ordrebekreftelsen du får på e-post. Avtalen er bindende for begge parter når vi har sendt ordrebekreftelsen. Ved motstrid går ufravikelig forbrukerlovgivning foran. Kjøpet reguleres av forbrukerkjøpsloven, angrerettloven og ehandelsloven.</p></details>
+<details><summary>3. Pris og frakt</summary><p>Bibelquiz koster 249 kr per stk. Ved kjøp av 3–9 stk er prisen 225 kr per stk, og ved 10 stk eller flere 199 kr per stk. Frakt koster 79 kr per forsendelse, uansett antall spill. Vi sender med PostNord eller Posten/Bring. De 100 første bestillingene får gratis frakt. Det kommer ingen andre gebyrer eller kostnader i tillegg.</p></details>
+<details><summary>4. Betaling</summary><p>Du betaler ingenting når du bestiller. Faktura ligger i pakken, med betalingsfrist 14 dager etter at du har mottatt varen. Ved for sen betaling kan det kreves forsinkelsesrente etter forsinkelsesrenteloven og purregebyr etter inkassoloven.</p></details>
+<details><summary>5. Levering og forsinkelse</summary><p>Bibelquiz er et forhåndssalg. Vi forventer at spillet er i Norge i starten av februar 2027, og at bestillinger sendes i den rekkefølgen de kom inn. Varen er dermed ikke tilgjengelig ved bestilling. Blir leveringen forsinket, gir vi beskjed på e-post med ny forventet dato. Leverer vi ikke innen avtalt tid, kan du heve kjøpet etter reglene i forbrukerkjøpsloven. Du kan også avbestille kostnadsfritt når som helst før pakken er sendt, ved å sende en e-post til post@bibelspillet.no.</p></details>
+<details id="angrerett"><summary>6. Angrerett</summary><p>Du har 14 dagers angrerett etter angrerettloven. Fristen løper fra dagen etter at du har mottatt varen. Du trenger ikke oppgi noen grunn. Gi oss beskjed innen fristen, for eksempel med e-post til post@bibelspillet.no eller med angreskjemaet under. Har du ikke betalt ennå, faller betalingsplikten bort. Har du betalt, betaler vi tilbake beløpet, inkludert standard frakt, senest 14 dager etter at vi fikk beskjeden. Vi kan holde tilbake betalingen til vi har mottatt varen i retur. Du må returnere varen innen 14 dager etter at du ga beskjed, og du dekker selv kostnaden ved å returnere den. Du er ansvarlig for verdiforringelse som skyldes annen håndtering enn det som er nødvendig for å fastslå varens art og egenskaper.</p>
+<p><b>Angreskjema</b> (fyll ut og send til post@bibelspillet.no dersom du vil gå fra avtalen):<br>
+Til Kunnskapshuset Cognito AS, Simonstad 102, 4868 Selåsvatn, post@bibelspillet.no<br>
+Jeg meddeler herved at jeg ønsker å gå fra min avtale om kjøp av følgende varer: ________<br>
+Avtalen ble inngått den / varen ble mottatt den: ________<br>
+Forbrukerens navn og adresse: ________<br>
+Dato og underskrift (bare dersom skjemaet sendes på papir): ________</p></details>
+<details><summary>7. Reklamasjon ved mangel</summary><p>Dersom varen har en mangel, må du gi oss beskjed innen rimelig tid etter at du oppdaget den. Fristen er aldri kortere enn to måneder fra du oppdaget mangelen. Reklamasjon må skje senest to år etter at du mottok varen. Du har rettigheter etter forbrukerkjøpsloven, blant annet til retting, omlevering, prisavslag, heving og erstatning.</p></details>
+<details><summary>8. Klage og tvister</summary><p>Ta først kontakt med oss på post@bibelspillet.no, så finner vi en løsning. Kommer vi ikke til enighet, kan du klage til Forbrukertilsynet (forbrukertilsynet.no), som kan mekle. Saken kan deretter bringes inn for Forbrukerklageutvalget.</p></details>
+</div></section>
+<section class="alt" id="personvern"><div class="wrap legal"><h2 class="section-title">Personvernerklæring</h2>
+<details><summary>Hvem er ansvarlig?</summary><p>Kunnskapshuset Cognito AS, org.nr. 937 493 096, er behandlingsansvarlig for personopplysningene du gir oss på bibelspillet.no. Kontakt: post@bibelspillet.no.</p></details>
+<details><summary>Hva samler vi inn, og hvorfor?</summary><p>Ved bestilling lagrer vi navn, e-post, telefon (valgfritt), adresse, antall og meldingen din. Vi bruker opplysningene til å levere varen og sende faktura. Grunnlaget er avtalen med deg (personvernforordningen art. 6 nr. 1 b). Ved interessemelding lagrer vi navn, e-post, organisasjon, antall og meldingen din. Vi bruker dem bare til å gi deg beskjed om Bibelquiz. Grunnlaget er samtykket ditt (art. 6 nr. 1 a), og du kan trekke det tilbake når som helst.</p></details>
+<details><summary>Hvem deler vi med?</summary><p>Skjemaene sendes via Formspree, som er databehandler for oss og lagrer data i USA. Overføringen skjer med EUs standardavtaler (SCC). Ved levering deler vi navn og adresse med fraktselskapet PostNord eller Posten/Bring. Regnskapsopplysninger oppbevares i fem år etter bokføringsloven. Vi selger aldri opplysningene dine.</p></details>
+<details><summary>Hvor lenge lagrer vi?</summary><p>Opplysninger om bestillinger lagres så lenge det trengs for å oppfylle avtalen og reklamasjonsretten, og regnskapsdata i fem år. Interessemeldinger slettes når Bibelquiz er lansert, eller tidligere hvis du ber om det.</p></details>
+<details><summary>Dine rettigheter</summary><p>Du kan be om innsyn i, retting av og sletting av opplysningene dine, og du kan protestere mot eller begrense behandlingen. Send en e-post til post@bibelspillet.no. Mener du at vi behandler opplysningene feil, kan du klage til Datatilsynet. Nettsiden bruker ikke informasjonskapsler (cookies) til sporing eller markedsføring.</p></details>
+</div></section>
+
+<footer><div class="brand">KHC Nordic</div>
+<div class="company">Kunnskapshuset Cognito AS · Org.nr. 937 493 096 · Simonstad 102, 4868 Selåsvatn<br>post@bibelspillet.no</div>
+<div class="legal-links"><a href="#salgsbetingelser">Salgsbetingelser</a>·<a href="#angrerett">Angrerett</a>·<a href="#personvern">Personvern</a></div></footer>
 
 <script>
   // ---- Innstillinger ----
@@ -301,7 +369,7 @@
       if (!r.ok) throw new Error();
       form.style.display = "none"; document.getElementById("thanks").style.display = "block";
     } catch (e) {
-      btn.disabled = false; btn.textContent = "Send forhåndsbestilling";
+      btn.disabled = false; btn.textContent = "Bestill med plikt til å betale";
       err.textContent = "Noe gikk galt. Prøv igjen, eller send bestillingen til " + KONTAKT_EPOST + ".";
       err.style.display = "block";
     }
@@ -349,6 +417,45 @@
       }
     });
   })();
+</script>
+<script>
+(function(){
+const Q=[
+ {q:"Hvem fikk de ti bud av Gud?",a:["Moses","Abraham","Aron","Josva"],f:"Moses fikk steintavlene på Sinai-fjellet (2 Mos 20)."},
+ {q:"Hvilken apostel tvilte på Jesu oppstandelse og måtte ha beviser?",a:["Tomas","Peter","Andreas","Filip"],f:"Tomas ville se naglemerkene før han trodde (Joh 20)."},
+ {q:"Hvilken profet ble svelget av en stor fisk?",a:["Jona","Elia","Daniel","Jeremia"],f:"Jona var i fiskens buk i tre dager og tre netter (Jona 2)."},
+ {q:"Hva skjedde med Lots hustru da hun så seg tilbake mot Sodoma?",a:["Hun ble til en saltstøtte","Hun ble blind","Hun ble til stein","Hun mistet stemmen"],f:"1 Mos 19,26."},
+ {q:"Hvilken profet svarte på Guds spørsmål om hvem som ville gå: «Her er jeg. Send meg!»?",a:["Jesaja","Jeremia","Samuel","Esekiel"],f:"Jesaja svarte etter synet i tempelet (Jes 6,8)."},
+ {q:"Hva het kvinnen som skjulte de israelittiske speiderne i Jeriko?",a:["Rahab","Rut","Debora","Ester"],f:"Rahab gjemte speiderne på taket sitt (Jos 2)."}
+];
+const box=document.getElementById('qzBox');let i=0,score=0,res=[];
+const shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
+function dots(){return '<div class="qz-dots">'+Q.map((_,k)=>'<i class="'+(k<res.length?(res[k]?'ok':'on'):(k===i?'on':''))+'"></i>').join('')+'</div>'}
+function show(){
+  const it=Q[i];
+  box.innerHTML='<div class="qz-top"><span>Spørsmål '+(i+1)+' av '+Q.length+'</span>'+dots()+'</div>'+
+   '<div class="qz-q"><div class="qz-num">'+(i+1)+'</div><p>'+it.q+'</p></div>'+
+   '<div class="qz-opts">'+shuf(it.a).map(o=>'<button type="button">'+o+'</button>').join('')+'</div>'+
+   '<p class="qz-fact"></p><button class="qz-next btn small" type="button">'+(i<Q.length-1?'Neste spørsmål →':'Se resultatet →')+'</button>';
+  box.querySelectorAll('.qz-opts button').forEach(b=>b.onclick=()=>{
+    const ok=b.textContent===it.a[0];if(ok)score++;res.push(ok);
+    box.querySelectorAll('.qz-opts button').forEach(x=>{x.disabled=true;if(x.textContent===it.a[0])x.classList.add('right')});
+    if(!ok)b.classList.add('wrong');
+    box.querySelector('.qz-fact').textContent=(ok?'Riktig! ':'Riktig svar: '+it.a[0]+'. ')+it.f;
+    const n=box.querySelector('.qz-next');n.style.visibility='visible';n.onclick=()=>{i++;i<Q.length?show():end()};
+  });
+}
+function end(){
+  const t=score===6?'Imponerende!':score>=4?'Godt jobbet!':score>=2?'Ikke verst!':'Her er det mye å oppdage!';
+  box.innerHTML='<div class="qz-end"><div class="qz-top" style="justify-content:center">'+dots()+'</div>'+
+   '<div class="qz-score">'+score+'/6</div><h3>'+t+'</h3>'+
+   '<p>Hele spillet har 280 spørsmål – noen lette, noen som får hele bordet til å diskutere.</p>'+
+   '<a class="btn" href="#bestill">Forhåndsbestill – 249 kr</a>'+
+   '<button class="qz-again" type="button">Prøv igjen</button></div>';
+  box.querySelector('.qz-again').onclick=()=>{i=0;score=0;res=[];show()};
+}
+show();
+})();
 </script>
 </body>
 </html>
