@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibelquiz – KHC Nordic Pocketserie | Forhåndsbestill</title>
+<meta name="description" content="Bibelquiz fra KHC Nordic Pocketserie. Spørrespill i lommeformat der alle svar har bibelreferanser. Forhåndsbestill nå – levering i starten av februar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F7F1E3; --paper:#FFFCF5; --green:#1E4A2D; --green-2:#2E6B42;
+    --red:#B3202A; --gold:#C49A3A; --ink:#2A2520; --muted:#6B6258; --line:#E4D8BE;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Source Sans 3",system-ui,sans-serif;color:var(--ink);background:var(--parchment);line-height:1.6;font-size:17px}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;color:var(--green);line-height:1.1;margin:0 0 .4em}
+  a{color:var(--green-2)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+  .brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:22px;color:var(--green);letter-spacing:.04em}
+  .brand small{display:block;font-family:"Source Sans 3",sans-serif;font-weight:400;font-size:12px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+  .btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:999px;border:0;font-size:17px;cursor:pointer;transition:transform .15s,background .15s}
+  .btn:hover{background:#951A23;transform:translateY(-1px)}
+  .btn.small{padding:10px 18px;font-size:15px}
+
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:28px 0 64px}
+  .badge{display:inline-block;background:var(--green);color:#fff;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:clamp(46px,7vw,78px)}
+  .hero .sub{font-family:"Cormorant Garamond",serif;font-size:clamp(22px,3vw,28px);color:var(--red);font-weight:600;margin:0 0 18px}
+  .hero p.lead{font-size:19px;color:var(--ink);max-width:34em}
+  .specs{font-weight:600;color:var(--green);letter-spacing:.04em;margin:14px 0 0}
+  .price{display:flex;align-items:baseline;gap:12px;margin:22px 0 24px}
+  .price strong{font-family:"Cormorant Garamond",serif;font-size:40px;color:var(--green)}
+  .price span{color:var(--muted)}
+  .offer{margin-top:18px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:0;padding:14px 16px;font-size:16px}
+  .hero-img{position:relative;text-align:center}
+  .hero-img img{width:100%;max-width:430px;height:auto;filter:drop-shadow(0 24px 30px rgba(60,40,10,.25));transform:rotate(-2deg)}
+
+  section{padding:64px 0}
+  section.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .center{text-align:center}
+  .section-title{font-size:clamp(34px,4.5vw,46px);text-align:center}
+  .section-intro{text-align:center;color:var(--muted);max-width:36em;margin:0 auto 40px}
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px}
+  section.alt .card{background:var(--parchment)}
+  .card .ico{width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;margin-bottom:14px}
+  .card h3{font-size:26px}
+  .card p{margin:0;color:var(--muted)}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+  .step{padding:22px 0;border-top:2px solid var(--green)}
+  .step b{display:block;font-family:"Cormorant Garamond",serif;font-size:24px;color:var(--green);margin-bottom:4px}
+  .step b::before{counter-increment:s;content:counter(s) ". ";color:var(--red)}
+  .step p{margin:0;color:var(--muted)}
+
+  form{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px;max-width:640px;margin:0 auto;box-shadow:0 10px 30px rgba(60,40,10,.06)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .row.three{grid-template-columns:120px 1fr}
+  label{display:block;font-weight:600;font-size:15px;margin:0 0 6px}
+  label .opt{font-weight:400;color:var(--muted)}
+  input,select,textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid #D6C8A8;border-radius:10px;background:#fff;color:var(--ink);margin-bottom:16px}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+  textarea{min-height:90px;resize:vertical}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:15px;margin:4px 0 20px}
+  .check input{width:auto;margin:4px 0 0}
+  .error{color:var(--red);font-size:14px;margin:-8px 0 14px;display:none}
+  .note{font-size:14px;color:var(--muted);text-align:center;margin-top:14px}
+  .thanks{display:none;text-align:center;padding:20px 0}
+  .thanks h3{font-size:32px}
+
+  details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 auto 12px;max-width:760px}
+  section.alt details{background:var(--parchment)}
+  summary{cursor:pointer;font-weight:600;font-size:17px;color:var(--green)}
+  details p{margin:10px 0 0;color:var(--ink)}
+
+  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:14px}
+  footer .brand{font-size:20px}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;gap:20px;padding-top:8px;text-align:center}
+    .hero-img{order:-1}
+    .hero-img img{max-width:280px}
+    .hero p.lead{margin:0 auto}
+    .price{justify-content:center}
+    .features,.steps{grid-template-columns:1fr}
+    .row{grid-template-columns:1fr;gap:0}
+    .row.three{grid-template-columns:110px 1fr;gap:12px}
+    form{padding:22px}
+    header.top .btn{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">KHC Nordic<small>Pocketserie</small></div>
+    <a class="btn small" href="#bestill">Forhåndsbestill</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <span class="badge">Forhåndssalg</span>
+      <h1>Bibelquiz</h1>
+      <p class="sub">Små kort. Store spørsmål.</p>
+      <p class="lead">Et spørrespill om tro, kunnskap og undring – i en eske som passer i lomma. Alle svar har bibelreferanser, så du kan slå opp og lese mer. Den første utgivelsen i KHC Nordic Pocketserie.</p>
+      <p class="specs">70 kort · 280 spørsmål · lommeformat</p>
+      <div class="price"><strong data-price>249 kr</strong><span>inkl. mva.</span></div>
+      <a class="btn" href="#bestill">Forhåndsbestill nå</a>
+      <div class="offer"><b>De 100 første bestillingene får gratis frakt.</b> Du betaler ingenting nå – fakturaen ligger i esken.</div>
+    </div>
+    <div class="hero-img">
+      <img src="bibelquiz.webp" alt="Esken til Bibelquiz fra KHC Nordic Pocketserie" width="900" height="1272">
+    </div>
+  </div>
+</div>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="section-title">Laget for å bli brukt</h2>
+    <p class="section-intro">Til familiekvelden, leiren, bibelgruppen eller bilturen.</p>
+    <div class="features">
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg></div>
+        <h3>Bibelreferanser</h3>
+        <p>280 spørsmål på 70 kort, og hvert svar viser til hvor i Bibelen det står. Spillet blir en vei inn i teksten.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg></div>
+        <h3>Lommeformat</h3>
+        <p>Den lille esken er lett å ta med seg overalt – i sekken, i hanskerommet eller på hytta.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.9 6.9L22 9.3l-5.5 4.8L18.2 22 12 18.3 5.8 22l1.7-7.9L2 9.3l7.1-.4z"/></svg></div>
+        <h3>Først i serien</h3>
+        <p>Bibelquiz er første utgivelse i KHC Nordic Pocketserie – og den første i sitt slag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Slik fungerer forhåndssalget</h2>
+    <p class="section-intro">Enkelt og uten risiko for deg.</p>
+    <div class="steps">
+      <div class="step"><b>Bestill nå</b><p>Fyll ut skjemaet under. Du betaler ingenting når du bestiller.</p></div>
+      <div class="step"><b>Vi sender i februar</b><p>Spillet ventes til Norge i starten av februar og sendes rett hjem til deg.</p></div>
+      <div class="step"><b>Betal med faktura</b><p>Fakturaen ligger i esken. De 100 første får gratis frakt.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="bestill">
+  <div class="wrap">
+    <h2 class="section-title">Forhåndsbestill Bibelquiz</h2>
+    <p class="section-intro">Vi sender deg en bekreftelse på e-post når vi har mottatt bestillingen.</p>
+
+    <form id="order" novalidate>
+      <div class="row">
+        <div><label for="navn">Navn</label><input id="navn" name="navn" autocomplete="name" required></div>
+        <div><label for="epost">E-post</label><input id="epost" name="epost" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="row">
+        <div><label for="telefon">Telefon <span class="opt">(valgfritt)</span></label><input id="telefon" name="telefon" type="tel" autocomplete="tel"></div>
+        <div><label for="antall">Antall</label>
+          <select id="antall" name="antall">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+          </select>
+        </div>
+      </div>
+      <label for="adresse">Leveringsadresse</label>
+      <input id="adresse" name="adresse" autocomplete="street-address" required>
+      <div class="row three">
+        <div><label for="postnr">Postnr.</label><input id="postnr" name="postnr" inputmode="numeric" maxlength="4" autocomplete="postal-code" required></div>
+        <div><label for="sted">Sted</label><input id="sted" name="sted" autocomplete="address-level2" required></div>
+      </div>
+      <label for="melding">Melding <span class="opt">(valgfritt)</span></label>
+      <textarea id="melding" name="melding" placeholder="F.eks. om bestillingen er en gave"></textarea>
+
+      <div class="check">
+        <input type="checkbox" id="vilkar" name="vilkar">
+        <label for="vilkar" style="font-weight:400;margin:0">Jeg har lest <a href="#vilkar-tekst">vilkårene for forhåndsbestilling</a>.</label>
+      </div>
+      <div class="error" id="err"></div>
+
+      <button class="btn" type="submit" style="width:100%">Send forhåndsbestilling</button>
+      <p class="note">Du betaler ingenting nå. Fakturaen kommer i esken.</p>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <h3>Takk for bestillingen!</h3>
+      <p>Vi har registrert forhåndsbestillingen din og sender spillet så snart det er i Norge i starten av februar.</p>
+    </div>
+  </div>
+</section>
+
+<section id="vilkar-tekst">
+  <div class="wrap">
+    <h2 class="section-title">Spørsmål og vilkår</h2>
+    <p class="section-intro">&nbsp;</p>
+    <details open><summary>Når kommer spillet?</summary><p>Vi regner med at Bibelquiz er i Norge i starten av februar. Vi sender ut bestillingene i den rekkefølgen de kom inn, og gir beskjed på e-post når pakken er på vei.</p></details>
+    <details><summary>Hvordan betaler jeg?</summary><p>Du betaler ingenting når du forhåndsbestiller. Fakturaen ligger i esken når du får spillet.</p></details>
+    <details><summary>Hva koster frakten?</summary><p>De 100 første bestillingene får gratis frakt. Deretter kommer frakt i tillegg, og prisen står på bekreftelsen du får før vi sender.</p></details>
+    <details><summary>Kan jeg avbestille?</summary><p>Ja. Du kan avbestille kostnadsfritt ved å sende oss en e-post før spillet er sendt. Når du har mottatt varen, har du 14 dagers angrerett etter angrerettloven.</p></details>
+    <details><summary>Hvordan kontakter jeg dere?</summary><p>Send en e-post til <a href="mailto:post@bibelspillet.no" data-email>post@bibelspillet.no</a>.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">KHC Nordic</div>
+  <p>Bibelquiz – KHC Nordic Pocketserie · <span data-email-text>post@bibelspillet.no</span></p>
+</footer>
+
+<script>
+  // ---- Innstillinger ----
+  const PRIS = "249";
+  const KONTAKT_EPOST = "post@bibelspillet.no";
+  const FORMSPREE_ID = "";                // f.eks. "xyzabcd" fra formspree.io
+  // -----------------------
+
+  document.querySelectorAll("[data-price]").forEach(e => e.textContent = PRIS + " kr");
+  document.querySelectorAll("[data-email]").forEach(a => { a.href = "mailto:" + KONTAKT_EPOST; a.textContent = KONTAKT_EPOST; });
+  document.querySelectorAll("[data-email-text]").forEach(e => e.textContent = KONTAKT_EPOST);
+
+  const form = document.getElementById("order");
+  const err = document.getElementById("err");
+  form.querySelectorAll("input,select,textarea").forEach(el => el.addEventListener("input", () => { err.style.display = "none"; }));
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const d = Object.fromEntries(new FormData(form).entries());
+    const missing = [];
+    if (!d.navn.trim()) missing.push("navn");
+    if (!/^\S+@\S+\.\S+$/.test(d.epost.trim())) missing.push("gyldig e-post");
+    if (!d.adresse.trim()) missing.push("adresse");
+    if (!/^\d{4}$/.test(d.postnr.trim())) missing.push("postnummer (4 siffer)");
+    if (!d.sted.trim()) missing.push("sted");
+    if (missing.length) { err.textContent = "Fyll inn " + missing.join(", ") + "."; err.style.display = "block"; return; }
+    if (!document.getElementById("vilkar").checked) { err.textContent = "Kryss av for at du har lest vilkårene."; err.style.display = "block"; return; }
+
+    if (!FORMSPREE_ID) {
+      const body = "Forhåndsbestilling Bibelquiz\n\nNavn: " + d.navn + "\nE-post: " + d.epost + "\nTelefon: " + (d.telefon||"") +
+        "\nAntall: " + d.antall + "\nAdresse: " + d.adresse + ", " + d.postnr + " " + d.sted + "\nMelding: " + (d.melding||"");
+      window.location.href = "mailto:" + KONTAKT_EPOST + "?subject=" + encodeURIComponent("Forhåndsbestilling Bibelquiz – " + d.navn) + "&body=" + encodeURIComponent(body);
+      form.style.display = "none"; const t = document.getElementById("thanks"); t.style.display = "block";
+      t.querySelector("p").textContent = "E-postprogrammet ditt åpnes med bestillingen ferdig utfylt – trykk Send for å fullføre. Fungerer det ikke, send bestillingen til " + KONTAKT_EPOST + ".";
+      return;
+    }
+    const btn = form.querySelector("button"); btn.disabled = true; btn.textContent = "Sender …";
+    try {
+      const r = await fetch("https://formspree.io/f/" + FORMSPREE_ID, {
+        method: "POST", headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      });
+      if (!r.ok) throw new Error();
+      form.style.display = "none"; document.getElementById("thanks").style.display = "block";
+    } catch (e) {
+      btn.disabled = false; btn.textContent = "Send forhåndsbestilling";
+      err.textContent = "Noe gikk galt. Prøv igjen, eller send bestillingen til " + KONTAKT_EPOST + ".";
+      err.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>
