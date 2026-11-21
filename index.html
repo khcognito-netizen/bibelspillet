@@ -112,6 +112,7 @@
       <p class="lead">Et spørrespill om tro, kunnskap og undring – i en eske som passer i lomma. Alle svar har bibelreferanser, så du kan slå opp og lese mer. Den første utgivelsen i KHC Nordic Pocketserie.</p>
       <p class="specs">70 kort · 280 spørsmål · lommeformat</p>
       <div class="price"><strong data-price>249 kr</strong><span>inkl. mva.</span></div>
+      <p class="specs" style="margin-top:6px"><b>Mengderabatt:</b> 3+ stk 225 kr/stk · 10+ stk 199 kr/stk</p>
       <a class="btn" href="#bestill">Forhåndsbestill nå</a>
       <div class="offer"><b>De 100 første bestillingene får gratis frakt.</b> Du betaler ingenting nå – fakturaen ligger i esken.</div>
       <p style="margin-top:14px;font-size:15px"><a href="#interesse" style="color:var(--green);font-weight:600">Ikke klar til å bestille? Meld interesse helt uforpliktende →</a></p>
@@ -172,12 +173,12 @@
       <div class="row">
         <div><label for="telefon">Telefon <span class="opt">(valgfritt)</span></label><input id="telefon" name="telefon" type="tel" autocomplete="tel"></div>
         <div><label for="antall">Antall</label>
-          <select id="antall" name="antall">
-            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-          </select>
+          <input id="antall" name="antall" type="number" min="1" max="999" step="1" value="1" inputmode="numeric" required>
         </div>
       </div>
+      <div id="sum" style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 16px;font-size:16px"></div>
+      <input type="hidden" name="stykkpris" id="stykkpris">
+      <input type="hidden" name="totalpris" id="totalpris">
       <label for="adresse">Leveringsadresse</label>
       <input id="adresse" name="adresse" autocomplete="street-address" required>
       <div class="row three">
@@ -246,6 +247,7 @@
     <details><summary>Hvordan betaler jeg?</summary><p>Du betaler ingenting når du forhåndsbestiller. Fakturaen ligger i esken når du får spillet.</p></details>
     <details><summary>Hva koster frakten?</summary><p>De 100 første bestillingene får gratis frakt. Deretter kommer frakt i tillegg, og prisen står på bekreftelsen du får før vi sender.</p></details>
     <details><summary>Kan jeg avbestille?</summary><p>Ja. Du kan avbestille kostnadsfritt ved å sende oss en e-post før spillet er sendt. Når du har mottatt varen, har du 14 dagers angrerett etter angrerettloven.</p></details>
+    <details><summary>Får jeg rabatt hvis jeg kjøper flere?</summary><p>Ja. Kjøper du 3–9 spill, koster de 225 kr per stk. Kjøper du 10 eller flere, koster de 199 kr per stk. Rabatten regnes ut automatisk i bestillingsskjemaet.</p></details>
     <details><summary>Hvordan kontakter jeg dere?</summary><p>Send en e-post til <a href="mailto:post@bibelspillet.no" data-email>post@bibelspillet.no</a>.</p></details>
   </div>
 </section>
@@ -304,6 +306,24 @@
       err.style.display = "block";
     }
   });
+</script>
+<script>
+  (function(){
+    const a = document.getElementById("antall");
+    const s = document.getElementById("sum");
+    const kr = n => n.toLocaleString("nb-NO") + " kr";
+    function pris(n){ return n >= 10 ? 199 : n >= 3 ? 225 : 249; }
+    function oppdater(){
+      const n = Math.max(1, parseInt(a.value, 10) || 1);
+      const p = pris(n), tot = n * p, spar = n * 249 - tot;
+      document.getElementById("stykkpris").value = p;
+      document.getElementById("totalpris").value = tot;
+      s.innerHTML = "<b>" + n + " stk × " + kr(p) + " = " + kr(tot) + "</b>" +
+        (spar > 0 ? " <span style='color:var(--green)'>– du sparer " + kr(spar) + "</span>" : "") +
+        "<br><span style='font-size:14px;color:var(--muted)'>" + (n < 3 ? "Kjøp 3 eller flere for 225 kr/stk, eller 10+ for 199 kr/stk." : n < 10 ? "Kjøp 10 eller flere for 199 kr/stk." : "Du har fått beste pris.") + "</span>";
+    }
+    a.addEventListener("input", oppdater); a.addEventListener("change", oppdater); oppdater();
+  })();
 </script>
 <script>
   (function(){
