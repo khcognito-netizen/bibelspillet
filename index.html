@@ -152,7 +152,6 @@ footer .company{margin:10px 0}
       <p class="lead">Et spørrespill om tro, kunnskap og undring – i en eske som passer i lomma. Alle svar har bibelreferanser, så du kan slå opp og lese mer. Den første utgivelsen i KHC Nordic Pocketserie.</p>
       <p class="specs">70 kort · 280 spørsmål · lommeformat</p>
       <div class="price"><strong data-price>249 kr</strong><span>per stk + frakt</span></div>
-      <p class="specs" style="margin-top:6px"><b>Mengderabatt:</b> 3+ stk 225 kr/stk · 10+ stk 199 kr/stk</p>
       <a class="btn" href="#bestill">Forhåndsbestill nå</a>
       <div class="offer"><b>De 100 første bestillingene får gratis frakt.</b> Du betaler ingenting nå – fakturaen ligger i esken.</div>
       <p style="margin-top:14px;font-size:15px"><a href="#interesse" style="color:var(--green);font-weight:600">Ikke klar til å bestille? Meld interesse helt uforpliktende →</a></p>
@@ -165,8 +164,8 @@ footer .company{margin:10px 0}
 
 <section class="alt">
   <div class="wrap">
-    <h2 class="section-title">Laget for å bli brukt</h2>
-    <p class="section-intro">Til familiekvelden, leiren, bibelgruppen eller bilturen.</p>
+    <h2 class="section-title">Et allsidig spill</h2>
+    <p class="section-intro">Til familiekvelden, vennegjengen, leiren, bibelgruppen eller bilturen.</p>
     <div class="features">
       <div class="card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg></div>
@@ -187,13 +186,13 @@ footer .company{margin:10px 0}
   </div>
 </section>
 
-<section class="quiz" id="test"><div class="wrap"><h2 class="section-title">Test deg selv</h2><p class="section-intro">Seks spørsmål fra spillet. Hvor mange klarer du?</p>
+<section class="quiz" id="test"><div class="wrap"><h2 class="section-title">Test deg selv</h2><p class="section-intro">Spørsmålene i spillet har fire vanskelighetsgrader. Her får du ett av hver – fra lett til ekspert.</p>
 <div class="qz"><div class="qz-paper" id="qzBox"></div></div></div></section>
 
 <section>
   <div class="wrap">
     <h2 class="section-title">Slik fungerer forhåndssalget</h2>
-    <p class="section-intro">Enkelt og uten risiko for deg.</p>
+    <p class="section-intro">Fra bestilling til spillet ligger i postkassen.</p>
     <div class="steps">
       <div class="step"><b>Bestill nå</b><p>Fyll ut skjemaet under. Du betaler ingenting når du bestiller.</p></div>
       <div class="step"><b>Vi sender i februar 2027</b><p>Spillet ventes til Norge i starten av februar 2027 og sendes rett hjem til deg.</p></div>
@@ -231,7 +230,7 @@ footer .company{margin:10px 0}
       <label for="melding">Melding <span class="opt">(valgfritt)</span></label>
       <textarea id="melding" name="melding" placeholder="F.eks. om bestillingen er en gave"></textarea>
 
-      <div class="sum"><b>Å betale:</b> 249 kr + frakt 79 kr (gratis for de 100 første). Bestillingen er bindende, men du betaler først med faktura når du har fått spillet. 14 dagers angrerett.</div>
+      <div class="sum"><b>Pris:</b> 249 kr + frakt 79 kr. De 100 første bestillingene får gratis frakt.</div>
 <div class="check">
         <input type="checkbox" id="vilkar" name="vilkar">
         <label for="vilkar" style="font-weight:400;margin:0">Jeg har lest og godtar <a href="#salgsbetingelser">salgsbetingelsene</a>, inkludert <a href="#angrerett">angrerett</a>, og <a href="#personvern">personvernerklæringen</a>.</label>
@@ -400,19 +399,17 @@ footer .company{margin:10px 0}
 <script>
 (function(){
 const Q=[
- {q:"Hvem fikk de ti bud av Gud?",a:["Moses","Abraham","Aron","Josva"],f:"Moses fikk steintavlene på Sinai-fjellet (2 Mos 20)."},
- {q:"Hvilken apostel tvilte på Jesu oppstandelse og måtte ha beviser?",a:["Tomas","Peter","Andreas","Filip"],f:"Tomas ville se naglemerkene før han trodde (Joh 20)."},
- {q:"Hvilken profet ble svelget av en stor fisk?",a:["Jona","Elia","Daniel","Jeremia"],f:"Jona var i fiskens buk i tre dager og tre netter (Jona 2)."},
- {q:"Hva skjedde med Lots hustru da hun så seg tilbake mot Sodoma?",a:["Hun ble til en saltstøtte","Hun ble blind","Hun ble til stein","Hun mistet stemmen"],f:"1 Mos 19,26."},
- {q:"Hvilken profet svarte på Guds spørsmål om hvem som ville gå: «Her er jeg. Send meg!»?",a:["Jesaja","Jeremia","Samuel","Esekiel"],f:"Jesaja svarte etter synet i tempelet (Jes 6,8)."},
- {q:"Hva het kvinnen som skjulte de israelittiske speiderne i Jeriko?",a:["Rahab","Rut","Debora","Ester"],f:"Rahab gjemte speiderne på taket sitt (Jos 2)."}
+ {l:"Lett",q:"Hvem fikk de ti bud av Gud?",a:["Moses","Abraham","Aron","Josva"],f:"Moses fikk steintavlene på Sinai-fjellet (2 Mos 20)."},
+ {l:"Middels",q:"Hvilken profet ble svelget av en stor fisk?",a:["Jona","Elia","Daniel","Jeremia"],f:"Jona var i fiskens buk i tre dager og tre netter (Jona 2)."},
+ {l:"Vanskelig",q:"Hvilken profet svarte på Guds spørsmål om hvem som ville gå: «Her er jeg. Send meg!»?",a:["Jesaja","Jeremia","Samuel","Esekiel"],f:"Jesaja svarte etter synet i tempelet (Jes 6,8)."},
+ {l:"Ekspert",q:"Hvor flyktet Moses da han hadde drept en egypter som slo en hebreer?",a:["Til Midjan","Til Kanaan","Til Moab","Til Edom"],f:"Moses flyktet til Midjan og slo seg ned der (2 Mos 2,15)."}
 ];
 const box=document.getElementById('qzBox');let i=0,score=0,res=[];
 const shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
 function dots(){return '<div class="qz-dots">'+Q.map((_,k)=>'<i class="'+(k<res.length?(res[k]?'ok':'on'):(k===i?'on':''))+'"></i>').join('')+'</div>'}
 function show(){
   const it=Q[i];
-  box.innerHTML='<div class="qz-top"><span>Spørsmål '+(i+1)+' av '+Q.length+'</span>'+dots()+'</div>'+
+  box.innerHTML='<div class="qz-top"><span>'+(i+1)+' av '+Q.length+' · '+it.l+'</span>'+dots()+'</div>'+
    '<div class="qz-q"><div class="qz-num">'+(i+1)+'</div><p>'+it.q+'</p></div>'+
    '<div class="qz-opts">'+shuf(it.a).map(o=>'<button type="button">'+o+'</button>').join('')+'</div>'+
    '<p class="qz-fact"></p><button class="qz-next btn small" type="button">'+(i<Q.length-1?'Neste spørsmål →':'Se resultatet →')+'</button>';
@@ -425,10 +422,10 @@ function show(){
   });
 }
 function end(){
-  const t=score===6?'Imponerende!':score>=4?'Godt jobbet!':score>=2?'Ikke verst!':'Her er det mye å oppdage!';
+  const t=score===4?'Imponerende!':score===3?'Godt jobbet!':score===2?'Ikke verst!':'Her er det mye å oppdage!';
   box.innerHTML='<div class="qz-end"><div class="qz-top" style="justify-content:center">'+dots()+'</div>'+
-   '<div class="qz-score">'+score+'/6</div><h3>'+t+'</h3>'+
-   '<p>Hele spillet har 280 spørsmål – noen lette, noen som får hele bordet til å diskutere.</p>'+
+   '<div class="qz-score">'+score+'/'+Q.length+'</div><h3>'+t+'</h3>'+
+   '<p>Hele spillet har 280 spørsmål i fire vanskelighetsgrader.</p>'+
    '<a class="btn" href="#bestill">Forhåndsbestill – 249 kr</a>'+
    '<button class="qz-again" type="button">Prøv igjen</button></div>';
   box.querySelector('.qz-again').onclick=()=>{i=0;score=0;res=[];show()};
