@@ -186,7 +186,7 @@ footer .company{margin:10px 0}
   </div>
 </section>
 
-<section class="quiz" id="test"><div class="wrap"><h2 class="section-title">Test deg selv</h2><p class="section-intro">Spørsmålene i spillet har fire vanskelighetsgrader. Her får du ett av hver – fra lett til ekspert.</p>
+<section class="quiz" id="test"><div class="wrap"><h2 class="section-title">Test deg selv</h2><p class="section-intro">Hvert kort har fire spørsmål – fra lett til vanskelig. Her får du ett av hvert nivå.</p>
 <div class="qz"><div class="qz-paper" id="qzBox"></div></div></div></section>
 
 <section>
@@ -399,10 +399,10 @@ footer .company{margin:10px 0}
 <script>
 (function(){
 const Q=[
- {l:"Lett",q:"Hvem fikk de ti bud av Gud?",a:["Moses","Abraham","Aron","Josva"],f:"Moses fikk steintavlene på Sinai-fjellet (2 Mos 20)."},
- {l:"Middels",q:"Hvilken profet ble svelget av en stor fisk?",a:["Jona","Elia","Daniel","Jeremia"],f:"Jona var i fiskens buk i tre dager og tre netter (Jona 2)."},
- {l:"Vanskelig",q:"Hvilken profet svarte på Guds spørsmål om hvem som ville gå: «Her er jeg. Send meg!»?",a:["Jesaja","Jeremia","Samuel","Esekiel"],f:"Jesaja svarte etter synet i tempelet (Jes 6,8)."},
- {l:"Ekspert",q:"Hvor flyktet Moses da han hadde drept en egypter som slo en hebreer?",a:["Til Midjan","Til Kanaan","Til Moab","Til Edom"],f:"Moses flyktet til Midjan og slo seg ned der (2 Mos 2,15)."}
+ {l:"Lett",q:"Hvem ble kastet i løvehulen – men overlevde?",a:["Daniel","Josef","Jona","Elia"],f:"Gud sendte sin engel og lukket løvenes gap (Dan 6)."},
+ {l:"Medium",q:"Hvilken elv ble Jesus døpt i?",a:["Jordan","Nilen","Eufrat","Tigris"],f:"Jesus kom fra Nasaret og ble døpt av Johannes i Jordan (Mark 1,9)."},
+ {l:"Litt vanskelig",q:"Hvilket nytt navn fikk Jakob etter kampen ved Jabbok?",a:["Israel","Abraham","Benjamin","Juda"],f:"«Du skal ikke lenger hete Jakob, men Israel» (1 Mos 32,28)."},
+ {l:"Vanskelig",q:"Hva het Moses' svigerfar?",a:["Jetro","Laban","Boas","Eli"],f:"Moses gjette småfeet til Jetro, svigerfaren sin, presten i Midjan (2 Mos 3,1)."}
 ];
 const box=document.getElementById('qzBox');let i=0,score=0,res=[];
 const shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
