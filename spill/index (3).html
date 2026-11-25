@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1E4A2D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bibelquiz">
+<title>Bibelquiz – poengtavle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1E4A2D;--g2:#2d6343;--cream:#F7F1E3;--paper:#fffdf7;--red:#B3202A;--gold:#C49A3A;--ink:#22261f;--mut:#6f6a5c;--line:#e8dfca;--soft:#efe6d1}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink);-webkit-tap-highlight-color:transparent}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.app{max-width:540px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 16px calc(16px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 2px 10px}
+.brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.7rem;line-height:1;color:var(--g);font-weight:700;cursor:pointer}
+.brand small{display:block;font-family:system-ui,sans-serif;font-size:.62rem;letter-spacing:.16em;color:var(--mut);font-weight:700;text-transform:uppercase;margin-bottom:3px}
+.hbtns{display:flex;gap:6px}
+.iconbtn{border:0;background:transparent;color:var(--g);font-size:.88rem;font-weight:700;padding:8px 10px;cursor:pointer;border-radius:10px}
+.iconbtn.arm{background:#f4dcdc;color:var(--red)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 2px 10px rgba(60,40,10,.05);margin-bottom:14px}
+h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;margin:0 0 10px;color:var(--g)}
+.lead{font-family:"Cormorant Garamond",Georgia,serif;color:var(--red);font-size:1.25rem;margin:0 0 14px}
+input[type=text],input[type=number]{width:100%;font-size:1rem;padding:12px;border:1px solid #d9cfb8;border-radius:10px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid var(--g);outline-offset:1px}
+.row{display:flex;gap:8px}
+.btn{white-space:nowrap;border:0;border-radius:999px;padding:13px 20px;font-size:1rem;font-weight:700;cursor:pointer;background:var(--g);color:#fff}
+.btn.red{background:var(--red)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:var(--soft);color:var(--g)}
+.btn.block{width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid #d9cfb8;background:#fff;border-radius:999px;padding:9px 14px;font-size:.93rem;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--g);color:#fff;border-color:var(--g)}
+.opt{margin-top:14px}
+.opt label{display:block;font-size:.78rem;color:var(--mut);margin-bottom:7px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.plist{list-style:none;margin:12px 0 0;padding:0}
+.plist li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.plist li:last-child{border-bottom:0}
+.dot{width:14px;height:14px;border-radius:50%;flex:0 0 14px}
+.plist .name{flex:1;font-weight:600}
+.x{border:0;background:#f4dcdc;color:var(--red);border-radius:8px;width:32px;height:32px;font-size:1.1rem;cursor:pointer}
+.kid{border:1px solid #d9cfb8;background:#fff;border-radius:999px;padding:5px 10px;font-size:.78rem;cursor:pointer;color:var(--mut)}
+.kid.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.hint{font-size:.82rem;color:var(--mut);margin-top:8px;line-height:1.4}
+/* moduser */
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:16px;padding:14px;cursor:pointer;color:var(--ink);box-shadow:0 2px 8px rgba(60,40,10,.04);min-height:118px}
+.mode:active{transform:scale(.98)}
+.mode .ico{font-size:1.6rem}
+.mode b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:1.3rem;color:var(--g);margin:4px 0 2px}
+.mode span{font-size:.8rem;color:var(--mut);line-height:1.3;display:block}
+.mode.wide{grid-column:1/-1;min-height:0;display:flex;align-items:center;gap:12px}
+.mode.wide b{margin:0}
+.mhead{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.mhead .ico{font-size:1.8rem}
+.mhead b{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.6rem;color:var(--g)}
+.summary{font-size:.88rem;color:var(--ink);background:var(--soft);border-radius:12px;padding:10px 12px;line-height:1.5}
+.toggle{border:0;background:none;color:var(--g);font-weight:700;padding:10px 0 0;cursor:pointer;font-size:.9rem}
+/* spill */
+.turn{text-align:center;padding:20px 18px}
+.who{font-size:.78rem;color:var(--mut);text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.pname{font-family:"Cormorant Garamond",Georgia,serif;font-size:2.4rem;font-weight:700;margin:2px 0 0;line-height:1.1}
+.goal{font-size:.85rem;color:var(--mut)}
+.cardno{display:inline-block;margin:10px 0 0;background:var(--soft);border-radius:999px;padding:6px 14px;font-size:.88rem;color:var(--g);font-weight:700}
+.cardno button{border:0;background:none;color:var(--red);font-weight:700;cursor:pointer;font-size:.85rem;margin-left:4px}
+.timer{position:relative;width:150px;height:150px;margin:12px auto;cursor:pointer}
+.timer svg{width:100%;height:100%;transform:rotate(-90deg)}
+.timer .t{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.6rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--g)}
+.timer.low .t{color:var(--red)}
+.timer.done .t{font-size:1.3rem;color:var(--red)}
+.qs{list-style:none;margin:14px 0 0;padding:0;text-align:left}
+.qs li{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;margin-bottom:6px;background:#f6f1e4;opacity:.45}
+.qs li.cur{opacity:1;background:#eef3ea;box-shadow:inset 0 0 0 2px var(--g)}
+.qs li.done{opacity:1}
+.qn{width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex:0 0 28px;font-size:.9rem}
+.ql{flex:1;font-size:.9rem;line-height:1.2}
+.ql b{display:block;font-size:.95rem}
+.qb{border:0;border-radius:10px;width:56px;height:44px;font-size:1.3rem;font-weight:800;cursor:pointer}
+.ok{background:var(--g);color:#fff}
+.no{background:#f4dcdc;color:var(--red);font-size:.78rem;line-height:1.1}
+.res{font-weight:800;font-size:1rem;min-width:56px;text-align:center}
+.res.r{color:var(--g)}.res.w{color:var(--red)}
+.sum{margin-top:12px}
+.sumtxt{font-size:1.15rem;font-weight:700;margin:4px 0 12px;color:var(--g)}
+.steal{background:#fbf3e2;border:1px dashed var(--gold);border-radius:12px;padding:12px;margin:0 0 12px;text-align:left}
+.steal h3{margin:0 0 4px;font-size:.95rem;color:#8a6a1f}
+.steal .hint{margin:0 0 8px}
+.sbtn{display:flex;align-items:center;justify-content:space-between;width:100%;border:1px solid #e5d6b0;background:#fff;border-radius:10px;padding:10px 12px;margin-top:6px;cursor:pointer;font-size:.9rem;color:var(--ink)}
+.sbtn.on{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:700}
+.board li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.board li:last-child{border-bottom:0}
+.rank{width:22px;font-weight:800;color:var(--mut);text-align:center}
+.bar{height:6px;background:var(--soft);border-radius:4px;margin-top:5px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:4px}
+.pts{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.board .active .name::after{content:" • tur";color:var(--gold);font-size:.75rem;font-weight:700}
+.log{font-size:.84rem;color:var(--mut);margin:8px 0 0;padding:0;list-style:none;max-height:140px;overflow:auto}
+.log li{padding:4px 0;border-bottom:1px dashed var(--line)}
+/* grillen */
+.gcount{display:flex;justify-content:center;gap:24px;margin:6px 0 10px}
+.gcount div{text-align:center}
+.gcount b{display:block;font-size:2.2rem;font-variant-numeric:tabular-nums;color:var(--g)}
+.gcount span{font-size:.75rem;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.gbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gbtns button{padding:26px 10px;font-size:1.3rem;border-radius:16px;border:0;font-weight:800;cursor:pointer}
+/* vinner */
+.win{text-align:center;padding:30px 18px}
+.trophy{font-size:4rem;line-height:1}
+.win h1{font-family:"Cormorant Garamond",Georgia,serif;margin:10px 0 4px;font-size:2.4rem}
+.hidden{display:none!important}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.confetti i{position:absolute;top:-12px;width:9px;height:14px;opacity:.9;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+/* regler */
+.modal{position:fixed;inset:0;background:rgba(30,40,30,.45);display:flex;align-items:flex-end;justify-content:center;z-index:10}
+.sheet{background:var(--paper);width:100%;max-width:540px;max-height:86vh;overflow:auto;border-radius:20px 20px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom))}
+.sheet h3{font-family:"Cormorant Garamond",Georgia,serif;color:var(--g);font-size:1.25rem;margin:16px 0 4px}
+.sheet p,.sheet li{font-size:.92rem;line-height:1.5}
+/* storskjerm */
+body.tv .app{max-width:none;padding:3vh 4vw}
+body.tv #turnCard,body.tv header .hbtns #btnRules,body.tv #logWrap{display:none}
+body.tv .board li{padding:2vh 0}
+body.tv .board .name{font-size:4vh}
+body.tv .board .pts{font-size:6vh;min-width:12vh}
+body.tv .board .dot{width:3vh;height:3vh;flex-basis:3vh}
+body.tv .board .bar{height:1.4vh}
+body.tv #tvHead{display:block!important}
+#tvHead{text-align:center;font-family:"Cormorant Garamond",Georgia,serif;color:var(--g);font-size:5vh;margin:0 0 2vh}
+footer{margin-top:auto;text-align:center;font-size:.75rem;color:var(--mut);padding-top:10px}
+footer a{color:var(--g)}
+</style>
+</head>
+<body>
+<div class="app">
+ <header>
+  <div class="brand" id="home"><small>KHC Nordic · Pocketserie</small>Bibelquiz</div>
+  <div class="hbtns">
+   <button class="iconbtn" id="btnRules" type="button">Regler</button>
+   <button class="iconbtn hidden" id="btnTv" type="button">Storskjerm</button>
+   <button class="iconbtn hidden" id="btnMenu" type="button">Avslutt</button>
+  </div>
+ </header>
+
+ <!-- MODUS -->
+ <section id="modes">
+  <p class="lead">Velg hvordan dere vil spille</p>
+  <div class="modes" id="modeGrid"></div>
+  <div class="hint" style="text-align:center;margin-top:14px">Kortene finner du i esken. Appen holder styr på tid og poeng.</div>
+ </section>
+
+ <!-- OPPSETT -->
+ <section id="setup" class="hidden">
+  <div class="card">
+   <div class="mhead"><span class="ico" id="mIco"></span><b id="mName"></b></div>
+   <div class="hint" id="mWho" style="margin-top:0"></div>
+  </div>
+  <div class="card">
+   <h2 id="pTitle">Spillere</h2>
+   <div class="row">
+    <input type="text" id="pName" placeholder="Navn" maxlength="20" autocomplete="off">
+    <button class="btn" id="pAdd" type="button">Legg til</button>
+   </div>
+   <ul class="plist" id="pList"></ul>
+   <div class="hint" id="pHint"></div>
+  </div>
+  <div class="card">
+   <h2>Innstillinger</h2>
+   <div class="summary" id="cfgSum"></div>
+   <button class="toggle" id="cfgToggle" type="button">Juster innstillinger ▾</button>
+   <div id="cfgBox" class="hidden"></div>
+  </div>
+  <button class="btn block" id="start" type="button" disabled>Start spillet</button>
+  <button class="btn ghost block" id="back" type="button" style="margin-top:10px">← Velg en annen modus</button>
+ </section>
+
+ <!-- SPILL -->
+ <section id="game" class="hidden">
+  <div id="tvHead" class="hidden"></div>
+  <div class="card turn" id="turnCard">
+   <div class="who" id="whoTxt"></div>
+   <div class="pname" id="curName">–</div>
+   <div class="goal" id="goalTxt"></div>
+   <div class="cardno" id="cardNo"></div>
+   <div class="timer" id="timer">
+    <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#efe6d1" stroke-width="10"/><circle id="ring" cx="60" cy="60" r="52" fill="none" stroke="#1E4A2D" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="0"/></svg>
+    <div class="t" id="tTxt">0:45</div>
+   </div>
+   <!-- vanlig tur -->
+   <div id="normal">
+    <button class="btn block" id="turnBtn" type="button">Start tur</button>
+    <div class="hint" id="turnHint">Spilleren til venstre trekker kortet og leser spørsmålene i rekkefølge.</div>
+    <ul class="qs" id="qs"></ul>
+    <div class="sum hidden" id="sum">
+     <div class="sumtxt" id="sumTxt"></div>
+     <div class="steal hidden" id="steal"></div>
+     <button class="btn block" id="nextBtn" type="button">Neste</button>
+    </div>
+   </div>
+   <!-- grillen -->
+   <div id="grill" class="hidden">
+    <div class="gcount"><div><b id="gOk">0</b><span>Riktige</span></div><div><b id="gAsk">0</b><span id="gAskL">av 20</span></div></div>
+    <button class="btn block red" id="gStart" type="button">Start grillen</button>
+    <div class="gbtns hidden" id="gBtns"><button class="no" id="gNo" type="button">✗ Feil / pass</button><button class="ok" id="gYes" type="button">✓ Riktig</button></div>
+    <div class="sum hidden" id="gSum"><div class="sumtxt" id="gSumTxt"></div><button class="btn block" id="gNext" type="button">Neste</button></div>
+    <div class="hint" id="gHint">De andre leser spørsmålene fra kortene, ett etter ett, så fort de kan.</div>
+   </div>
+  </div>
+
+  <div class="card">
+   <div class="row" style="justify-content:space-between;align-items:center">
+    <h2 style="margin:0">Poengliste</h2>
+    <button class="iconbtn" id="undo" type="button" disabled>↶ Angre</button>
+   </div>
+   <ul class="plist board" id="board"></ul>
+   <div id="logWrap"><ul class="log" id="log"></ul></div>
+  </div>
+ </section>
+
+ <!-- VINNER -->
+ <section id="winner" class="hidden">
+  <div class="card win">
+   <div class="trophy" id="wIco">🏆</div>
+   <h1 id="wName">–</h1>
+   <div class="goal" id="wTxt"></div>
+  </div>
+  <div class="card">
+   <h2>Resultat</h2>
+   <ul class="plist board" id="final"></ul>
+  </div>
+  <button class="btn block red hidden" id="tieBtn" type="button" style="margin-bottom:10px">Omgrilling for de som står likt</button>
+  <button class="btn block" id="again" type="button" style="margin-bottom:10px">Omkamp med samme oppsett</button>
+  <button class="btn ghost block" id="newGame" type="button">Velg ny modus</button>
+ </section>
+
+ <footer>Kortene finner du i esken · <a href="https://bibelspillet.no">bibelspillet.no</a></footer>
+</div>
+<div class="confetti" id="confetti"></div>
+<div class="modal hidden" id="rules"><div class="sheet" id="rulesBody"></div></div>
+
+<script>
+(function(){
+var COLORS=["#1E4A2D","#B3202A","#C49A3A","#3b6ea5","#8a4fa3","#2e9b8f","#d1495b","#6f6a5c"];
+var QN=["Lett","Medium","Litt vanskelig","Vanskelig"];
+var MODES={
+ familie:{ico:"🏡",name:"Familie",who:"For alle aldre rundt kjøkkenbordet. Alle riktige svar gir 1 poeng, og barn kan få ekstra tid.",cfg:{type:"goal",rule:"lik",goal:15,time:60,steal:true,kid:true,noPass:false,bonus:0}},
+ klassisk:{ico:"📖",name:"Klassisk",who:"Reglene i esken. For venner, par og spillkvelder.",cfg:{type:"goal",rule:"stige",goal:30,time:45,steal:false,kid:false,noPass:false,bonus:0}},
+ lag:{ico:"👥",name:"Lag og konfirmanter",who:"2–6 lag på leir, i menigheten eller i konfirmantgruppa. Kan vises på storskjerm.",cfg:{type:"goal",rule:"stige",goal:30,time:45,steal:true,kid:false,noPass:false,bonus:0,teams:true}},
+ grillen:{ico:"🔥",name:"Grillen",who:"Én om gangen i den varme stolen: så mange riktige som mulig av 20 spørsmål på 2 minutter.",cfg:{type:"grill",rule:"lik",gtime:120,gmax:20}},
+ maraton:{ico:"🏃",name:"Maraton",who:"Spill gjennom kortstokken. Ingen poenggrense – flest poeng når kortene er brukt, vinner.",cfg:{type:"marathon",rule:"stige",cards:35,time:45,steal:false,kid:false,noPass:false,bonus:0}},
+ ekspert:{ico:"🎓",name:"Ekspert",who:"For bibelkjennere. 30 sekunder, ingen pass – første feil avslutter turen. Fullt hus gir 2 i bonus.",cfg:{type:"goal",rule:"stige",goal:40,time:30,steal:false,kid:false,noPass:true,bonus:2}},
+ egen:{ico:"⚙️",name:"Egendefinert",who:"Velg alle innstillingene selv.",cfg:{type:"goal",rule:"stige",goal:30,time:45,steal:false,kid:false,noPass:false,bonus:0}}
+};
+var KEY="bq-score3";
+var S=fresh();
+function fresh(){return{mode:null,cfg:{},players:[],turn:0,cur:[],phase:"ready",history:[],running:false,cards:0,used:[],cardNo:0,stolen:[],grill:null,tLeft:null}}
+var store={get:function(){try{return JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){return null}},set:function(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}},clear:function(){try{localStorage.removeItem(KEY)}catch(e){}}};
+var $=function(id){return document.getElementById(id)};
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
+function sum(a){return a.reduce(function(t,x){return t+x},0)}
+function P(k){return S.cfg.rule==="lik"?1:(k===0?1:2)}
+function show(id){["modes","setup","game","winner"].forEach(function(s){$(s).classList.toggle("hidden",s!==id)});
+ $("btnMenu").classList.toggle("hidden",id!=="game");$("btnTv").classList.toggle("hidden",!(id==="game"&&S.cfg.teams));
+ if(id!=="game")document.body.classList.remove("tv");window.scrollTo(0,0)}
+function unit(){return S.cfg.teams?"lag":"spillere"}
+
+/* ---------- moduser ---------- */
+function renderModes(){var keys=Object.keys(MODES);
+ $("modeGrid").innerHTML=keys.map(function(k){var m=MODES[k];return '<button class="mode'+(k==="egen"?" wide":"")+'" data-m="'+k+'" type="button"><div class="ico">'+m.ico+'</div><div><b>'+m.name+'</b><span>'+(k==="egen"?"Velg alle innstillingene selv":m.who.split(".")[0])+'</span></div></button>'}).join("")}
+$("modeGrid").addEventListener("click",function(e){var b=e.target.closest(".mode");if(!b)return;pickMode(b.dataset.m)});
+function pickMode(k){var keep=S.players.map(function(p){return{name:p.name,color:p.color,score:0,kid:!!p.kid}});S=fresh();S.players=keep;S.mode=k;S.cfg=JSON.parse(JSON.stringify(MODES[k].cfg));
+ $("mIco").textContent=MODES[k].ico;$("mName").textContent=MODES[k].name;$("mWho").textContent=MODES[k].who;
+ $("pTitle").textContent=S.cfg.teams?"Lag":"Spillere";$("pName").placeholder=S.cfg.teams?"Lagnavn, f.eks. Lag 1":"Navn, f.eks. Kari";
+ var open=k==="egen";$("cfgBox").classList.toggle("hidden",!open);$("cfgToggle").classList.toggle("hidden",open);
+ renderCfg();renderPlayers();show("setup")}
+$("back").onclick=function(){show("modes")};
+$("home").onclick=function(){if(!S.running){show("modes")}};
+
+/* ---------- spillere ---------- */
+function minP(){return S.cfg.type==="grill"?1:2}
+function renderPlayers(){
+ $("pList").innerHTML=S.players.map(function(p,i){return '<li><span class="dot" style="background:'+p.color+'"></span><span class="name">'+esc(p.name)+'</span>'+(S.cfg.kid?'<button class="kid'+(p.kid?" on":"")+'" data-k="'+i+'" type="button">Barn +15 s</button>':"")+'<button class="x" data-i="'+i+'" aria-label="Fjern">×</button></li>'}).join("");
+ var n=S.players.length,m=minP();
+ $("pHint").textContent=n<m?(m===1?"Legg til minst én spiller.":"Legg til minst to "+unit()+"."):n+" "+(n===1?(S.cfg.teams?"lag":"spiller"):unit())+" klare. Rekkefølgen her er turrekkefølgen."+(S.cfg.kid?" Trykk «Barn» for å gi 15 sekunder ekstra.":"");
+ $("start").disabled=n<m||(S.cfg.type==="goal"&&!(S.cfg.goal>0))}
+function addPlayer(){var n=$("pName").value.trim();if(!n)return;if(S.players.length>=8){$("pHint").textContent="Maks 8.";return}
+ S.players.push({name:n,color:COLORS[S.players.length%COLORS.length],score:0,kid:false});$("pName").value="";$("pName").focus();renderPlayers()}
+$("pAdd").onclick=addPlayer;
+$("pName").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();addPlayer()}});
+$("pList").addEventListener("click",function(e){var b=e.target.closest(".x");if(b){S.players.splice(+b.dataset.i,1);S.players.forEach(function(p,i){p.color=COLORS[i%COLORS.length]});return renderPlayers()}
+ var k=e.target.closest(".kid");if(k){var p=S.players[+k.dataset.k];p.kid=!p.kid;renderPlayers()}});
+
+/* ---------- innstillinger ---------- */
+function goalOpts(){return S.cfg.rule==="lik"?[10,15,20]:[20,30,40]}
+function chipGroup(key,label,opts){return '<div class="opt"><label>'+label+'</label><div class="chips" data-key="'+key+'">'+opts.map(function(o){return '<button class="chip'+(String(S.cfg[key])===String(o[0])?" on":"")+'" data-v="'+o[0]+'" type="button">'+o[1]+'</button>'}).join("")+'</div></div>'}
+function renderCfg(){var c=S.cfg,h="";
+ h+=chipGroup("rule","Poengregel",[["lik","Alle svar 1 poeng"],["stige","1–2–2–2 poeng"]]);
+ if(c.type==="goal"||c.type==="marathon")h+=chipGroup("time","Tid per kort",[[30,"30 sek"],[45,"45 sek"],[60,"1 min"],[0,"Ingen klokke"]]);
+ if(c.type==="goal"){var go=goalOpts(),opts=go.map(function(g){return[g,g+" poeng"]});var custom=go.indexOf(c.goal)<0;
+  h+='<div class="opt"><label>Første til</label><div class="chips" data-key="goal">'+opts.map(function(o){return '<button class="chip'+(!custom&&c.goal===o[0]?" on":"")+'" data-v="'+o[0]+'" type="button">'+o[1]+'</button>'}).join("")+'<button class="chip'+(custom?" on":"")+'" data-v="custom" type="button">Annet</button></div><input type="number" id="goalCustom" class="'+(custom?"":"hidden")+'" min="1" max="500" inputmode="numeric" placeholder="Skriv poengsum" value="'+(custom&&c.goal?c.goal:"")+'" style="margin-top:10px"></div>'}
+ if(c.type==="marathon")h+=chipGroup("cards","Antall kort",[[20,"20 kort"],[35,"35 kort"],[70,"Alle 70"]]);
+ if(c.type==="grill"){h+=chipGroup("gtime","Tid i grillen",[[60,"1 min"],[120,"2 min"],[180,"3 min"]]);h+=chipGroup("gmax","Maks spørsmål",[[10,"10"],[20,"20"],[28,"28 (7 kort)"]])}
+ if(c.type!=="grill"){h+=chipGroup("steal","Stjel poenget",[[true,"På"],[false,"Av"]]);h+=chipGroup("kid","Ekstra tid for barn",[[true,"På"],[false,"Av"]]);h+=chipGroup("noPass","Første feil avslutter turen",[[false,"Nei"],[true,"Ja"]])}
+ $("cfgBox").innerHTML=h;renderSum()}
+function renderSum(){var c=S.cfg,t=[];
+ t.push(c.rule==="lik"?"Alle riktige svar gir 1 poeng":"Spørsmål 1 gir 1 poeng, 2–4 gir 2 poeng");
+ if(c.type==="goal")t.push("Første til "+c.goal+" poeng vinner");
+ if(c.type==="marathon")t.push(c.cards+" kort – flest poeng vinner");
+ if(c.type==="grill")t.push("Maks "+c.gmax+" spørsmål på "+(c.gtime/60)+" min per spiller");
+ if(c.type!=="grill"){t.push(c.time?c.time+" sekunder per kort":"Ingen nedtelling");if(c.steal)t.push("Stjel poenget er på");if(c.kid)t.push("Barn kan få 15 sek ekstra");if(c.noPass)t.push("Første feil avslutter turen");if(c.bonus)t.push("Fullt hus gir +"+c.bonus+" i bonus")}
+ $("cfgSum").innerHTML=t.map(esc).join("<br>")}
+$("cfgToggle").onclick=function(){$("cfgBox").classList.toggle("hidden");this.textContent=$("cfgBox").classList.contains("hidden")?"Juster innstillinger ▾":"Skjul innstillinger ▴"};
+$("cfgBox").addEventListener("click",function(e){var c=e.target.closest(".chip");if(!c)return;var k=c.parentNode.dataset.key,v=c.dataset.v;
+ if(k==="goal"){if(v==="custom"){S.cfg.goal=0;renderCfg();renderPlayers();setTimeout(function(){$("goalCustom").focus()},30);return}S.cfg.goal=+v}
+ else if(k==="rule"){var oldOpts=goalOpts(),idx=oldOpts.indexOf(S.cfg.goal);S.cfg.rule=v;if(idx>=0)S.cfg.goal=goalOpts()[idx]}
+ else if(v==="true"||v==="false")S.cfg[k]=v==="true";else S.cfg[k]=+v;
+ renderCfg();renderPlayers()});
+$("cfgBox").addEventListener("input",function(e){if(e.target.id==="goalCustom"){S.cfg.goal=Math.max(0,Math.min(500,+e.target.value||0));renderSum();renderPlayers()}});
+
+/* ---------- regler ---------- */
+var RULES='<h2 style="margin-top:0">Slik spiller dere Bibelquiz</h2><p>Hvert kort har fire spørsmål. Spørsmål 1 er det letteste. Den som har tur, svarer på så mange som mulig før tiden er ute. Den som sitter til venstre, trekker kortet og leser opp spørsmålene i rekkefølge. Svarene står på baksiden av kortet.</p><p>Trykk ✓ når svaret er riktig, og «Feil/pass» når det er feil eller spilleren vil hoppe over. Man kan ikke gå tilbake til et spørsmål. Trykk på klokka for å sette spillet på pause.</p>'+
+ Object.keys(MODES).map(function(k){var m=MODES[k];return '<h3>'+m.ico+' '+m.name+'</h3><p>'+esc(m.who)+'</p>'}).join("")+
+ '<h3>Stjel poenget</h3><p>Når stjeling er på, kan neste spiller eller lag svare på spørsmålene den forrige ikke fikk til. Hvert stjålne svar gir 1 poeng.</p><h3>Kortene</h3><p>Ta alltid det øverste kortet i bunken. Brukte kort legges i en egen bunke. Appen teller hvor mange kort dere har spilt.</p><button class="btn block" id="rulesClose" type="button" style="margin-top:16px">Lukk</button>';
+$("btnRules").onclick=function(){$("rulesBody").innerHTML=RULES;$("rules").classList.remove("hidden")};
+$("rules").addEventListener("click",function(e){if(e.target.id==="rules"||e.target.id==="rulesClose")$("rules").classList.add("hidden")});
+
+/* ---------- felles spill ---------- */
+function drawCard(){var free=[];for(var i=1;i<=70;i++)if(S.used.indexOf(i)<0)free.push(i);if(!free.length){S.used=[];return drawCard()}S.cardNo=free[Math.floor(Math.random()*free.length)]}
+function renderCardNo(){$("cardNo").innerHTML='Ta neste kort fra bunken · kort '+(S.cards+1)+(S.cfg.type==="marathon"?' av '+S.cfg.cards:'')}
+function start(){S.players.forEach(function(p){p.score=0});S.turn=0;S.cur=[];S.phase="ready";S.history=[];S.running=true;S.cards=0;S.used=[];S.stolen=[];S.tLeft=null;
+ if(S.cfg.type==="grill"){S.grill={i:0,ok:0,ask:0,pts:0,ans:[],res:S.players.map(function(){return null}),tie:null}}
+ drawCard();enterGame()}
+$("start").onclick=start;
+function enterGame(){show("game");var g=S.cfg.type==="grill";$("normal").classList.toggle("hidden",g);$("grill").classList.toggle("hidden",!g);
+ $("goalTxt").textContent=S.cfg.type==="goal"?"Første til "+S.cfg.goal+" poeng vinner":S.cfg.type==="marathon"?S.cfg.cards+" kort – flest poeng vinner":"Flest riktige vinner";
+ if(g){tTotal=S.cfg.gtime;tLeft=S.tLeft!=null?S.tLeft:tTotal;renderGrill()}else{tTotal=turnTime();tLeft=S.tLeft!=null?S.tLeft:tTotal;renderGame()}
+ drawTimer();store.set()}
+function turnTime(){var p=S.players[S.turn];return S.cfg.time?S.cfg.time+(S.cfg.kid&&p&&p.kid?15:0):0}
+function curPts(){var p=sum(S.cur.map(function(r,k){return r?P(k):0}));if(S.cfg.bonus&&S.cur.length===4&&S.cur.every(Boolean))p+=S.cfg.bonus;return p}
+function nextIdx(){return (S.turn+1)%S.players.length}
+function stealPts(){return S.stolen.length}
+function renderBoard(){var ph=S.phase,live=S.cfg.type!=="grill";
+ var order=S.players.map(function(p,i){return{p:p,i:i}}).sort(function(a,b){return b.p.score-a.p.score||a.i-b.i});
+ var top=Math.max.apply(null,S.players.map(function(p){return p.score}).concat([1]));
+ var ref=S.cfg.type==="goal"?S.cfg.goal:Math.max(top,10);
+ $("board").innerHTML=order.map(function(o,r){var add=0;if(live&&o.i===S.turn&&ph!=="ready")add=curPts();if(live&&ph==="sum"&&o.i===nextIdx())add+=stealPts();
+  var sc=o.p.score+add,pct=Math.min(100,Math.round(sc/ref*100));
+  return '<li class="'+(o.i===S.turn?"active":"")+'"><span class="rank">'+(r+1)+'</span><span class="dot" style="background:'+o.p.color+'"></span><div style="flex:1"><div class="name">'+esc(o.p.name)+'</div><div class="bar"><i style="width:'+pct+'%;background:'+o.p.color+'"></i></div></div><span class="pts">'+sc+'</span></li>'}).join("");
+ $("tvHead").textContent=S.cfg.type==="goal"?"Første til "+S.cfg.goal+" poeng":"Bibelquiz";
+ $("log").innerHTML=S.history.slice(-6).reverse().map(function(h){var p=S.players[h.i];if(h.g)return '<li>'+esc(p.name)+": "+h.ok+" riktige av "+h.ask+" – "+h.pts+" poeng</li>";var s=h.steal&&h.steal.n?" · "+esc(S.players[h.steal.j].name)+" stjal "+h.steal.n:"";return '<li>'+esc(p?p.name:"?")+": "+h.pts+" poeng ("+h.ans.map(function(a){return a?"✓":"✗"}).join("")+")"+s+"</li>"}).join("")}
+
+/* ---------- vanlig tur ---------- */
+function renderGame(){var cur=S.players[S.turn],ph=S.phase;
+ $("curName").textContent=cur.name;$("curName").style.color=cur.color;
+ $("whoTxt").textContent=ph==="ready"?(S.cfg.teams?"Nå er det lagets tur":"Nå er det din tur"):ph==="play"?"Svar så mange du rekker":"Turen er ferdig";
+ renderCardNo();$("cardNo").classList.toggle("hidden",ph!=="ready");
+ $("timer").classList.toggle("hidden",!S.cfg.time);
+ $("turnBtn").classList.toggle("hidden",ph!=="ready");$("turnHint").classList.toggle("hidden",ph!=="ready");
+ $("qs").classList.toggle("hidden",ph==="ready");$("sum").classList.toggle("hidden",ph!=="sum");
+ var noLbl=S.cfg.noPass?"Feil":"Feil/<br>pass";
+ $("qs").innerHTML=[0,1,2,3].map(function(k){var a=S.cur[k],state=a!==undefined?"done":(k===S.cur.length&&ph==="play"?"cur":"");
+  var right=a!==undefined?'<span class="res '+(a?"r":"w")+'">'+(a?"+"+P(k):"–")+'</span>':(state==="cur"?'<button class="qb no" data-a="0" type="button">'+noLbl+'</button><button class="qb ok" data-a="1" type="button">✓</button>':'<span class="res">'+P(k)+'p</span>');
+  return '<li class="'+state+'"><span class="qn">'+(k+1)+'</span><span class="ql"><b>Spørsmål '+(k+1)+'</b>'+QN[k]+' · '+P(k)+' poeng</span>'+right+'</li>'}).join("");
+ if(ph==="sum"){var p=curPts(),nx=S.players[nextIdx()],full=S.cur.length===4&&S.cur.every(Boolean);
+  $("sumTxt").textContent=cur.name+" fikk "+p+" poeng denne turen"+(full?" – fullt hus! 🎉":"");
+  var wrong=[];S.cur.forEach(function(a,k){if(!a)wrong.push(k)});
+  var canSteal=S.cfg.steal&&wrong.length&&S.players.length>1&&!lastCard();
+  $("steal").classList.toggle("hidden",!canSteal);
+  if(canSteal)$("steal").innerHTML='<h3>Stjel poenget</h3><div class="hint">'+esc(nx.name)+' kan svare på spørsmålene som ble feil. Hvert riktig svar gir 1 poeng.</div>'+wrong.map(function(k){var on=S.stolen.indexOf(k)>=0;return '<button class="sbtn'+(on?" on":"")+'" data-s="'+k+'" type="button"><span>Spørsmål '+(k+1)+'</span><span>'+(on?"Stjålet +1 ✓":"Riktig svar?")+'</span></button>'}).join("");
+  $("nextBtn").textContent=lastCard()?"Se resultatet":"Neste: "+nx.name}
+ renderBoard();$("undo").disabled=!(S.cur.length||S.history.length)}
+function lastCard(){return S.cfg.type==="marathon"&&S.cards+1>=S.cfg.cards}
+$("turnBtn").onclick=function(){S.phase="play";S.cur=[];S.stolen=[];tTotal=turnTime();if(S.cfg.time){tLeft=tTotal;runTimer(endTurn)}renderGame();store.set()};
+$("qs").addEventListener("click",function(e){var b=e.target.closest(".qb");if(!b||S.phase!=="play")return;answer(+b.dataset.a)});
+function answer(a){S.cur.push(a);if(navigator.vibrate)navigator.vibrate(a?30:[20,40,20]);
+ if(S.cfg.type==="goal"&&S.players[S.turn].score+curPts()>=S.cfg.goal)return endTurn(true);
+ if(S.cur.length>=4||(!a&&S.cfg.noPass))return endTurn();renderGame();store.set()}
+function endTurn(won){stopTimer();S.answered=S.cur.length;while(S.cur.length<4)S.cur.push(0);
+ if(won===true){var p=S.players[S.turn],pts=curPts();p.score+=pts;S.history.push({i:S.turn,ans:S.cur.slice(),pts:pts,card:S.cardNo});S.used.push(S.cardNo);S.cards++;S.running=false;store.set();return winner([S.turn])}
+ S.phase="sum";renderGame();store.set()}
+$("steal").addEventListener("click",function(e){var b=e.target.closest(".sbtn");if(!b)return;var k=+b.dataset.s,i=S.stolen.indexOf(k);if(i>=0)S.stolen.splice(i,1);else S.stolen.push(k);renderGame();store.set()});
+$("nextBtn").onclick=function(){var p=S.players[S.turn],pts=curPts(),j=nextIdx(),sn=S.stolen.length;p.score+=pts;if(sn)S.players[j].score+=sn;
+ S.history.push({i:S.turn,ans:S.cur.slice(),pts:pts,answered:S.answered,card:S.cardNo,steal:{j:j,n:sn}});S.used.push(S.cardNo);S.cards++;
+ if(S.cfg.type==="goal"&&sn&&S.players[j].score>=S.cfg.goal){S.running=false;store.set();return winner([j])}
+ if(S.cfg.type==="marathon"&&S.cards>=S.cfg.cards){S.running=false;store.set();return finishByScore()}
+ S.turn=j;S.cur=[];S.stolen=[];S.phase="ready";S.tLeft=null;tTotal=turnTime();tLeft=tTotal;drawCard();drawTimer();renderGame();store.set()};
+$("undo").onclick=function(){stopTimer();
+ if(S.cfg.type==="grill")return grillUndo();
+ if(S.phase==="sum"){S.cur=S.cur.slice(0,Math.max(0,S.answered-1));S.stolen=[];S.phase="play"}
+ else if(S.cur.length){S.cur.pop()}
+ else if(S.history.length){var h=S.history.pop();S.players[h.i].score-=h.pts;if(h.steal&&h.steal.n)S.players[h.steal.j].score-=h.steal.n;S.used.pop();S.cards--;S.turn=h.i;S.cardNo=h.card;S.cur=h.ans.slice(0,Math.max(0,(h.answered==null?h.ans.length:h.answered)-1));S.stolen=[];S.phase="play"}
+ tTotal=turnTime();if(S.phase==="play"&&S.cfg.time&&tLeft<=0)tLeft=10;
+ renderGame();drawTimer();store.set()};
+
+/* ---------- grillen ---------- */
+function gPlayers(){return S.grill.tie||S.players.map(function(p,i){return i})}
+function renderGrill(){var G=S.grill,i=gPlayers()[G.i],p=S.players[i],ph=S.phase;S.turn=i;
+ $("curName").textContent=p.name;$("curName").style.color=p.color;
+ $("whoTxt").textContent=ph==="ready"?(G.tie?"Omgrilling":"Neste i grillen"):ph==="play"?"I grillen nå!":"Ferdig grillet";
+ $("cardNo").classList.add("hidden");$("timer").classList.remove("hidden");
+ $("gOk").textContent=G.ok;$("gAsk").textContent=G.ask;$("gAskL").textContent="av "+gmax();
+ $("gStart").classList.toggle("hidden",ph!=="ready");$("gHint").classList.toggle("hidden",ph!=="ready");
+ $("gBtns").classList.toggle("hidden",ph!=="play");$("gSum").classList.toggle("hidden",ph!=="sum");
+ if(ph==="sum"){$("gSumTxt").textContent=p.name+" fikk "+G.ok+" riktige av "+G.ask+" – "+G.pts+" poeng";var last=G.i+1>=gPlayers().length;$("gNext").textContent=last?"Se resultatet":"Neste i grillen: "+S.players[gPlayers()[G.i+1]].name}
+ renderBoard();$("undo").disabled=!(ph==="play"&&G.ans.length)}
+function gmax(){return S.grill.tie?5:S.cfg.gmax}
+function gtime(){return S.grill.tie?30:S.cfg.gtime}
+$("gStart").onclick=function(){var G=S.grill;G.ok=0;G.ask=0;G.pts=0;G.ans=[];S.phase="play";tTotal=gtime();tLeft=tTotal;runTimer(grillEnd);renderGrill();store.set()};
+function gAnswer(a){var G=S.grill;if(S.phase!=="play")return;G.ans.push(a);G.ask++;if(a){G.ok++;G.pts+=P((G.ask-1)%4)}if(navigator.vibrate)navigator.vibrate(a?30:[20,40,20]);
+ if(G.ask>=gmax())return grillEnd();renderGrill();store.set()}
+$("gYes").onclick=function(){gAnswer(1)};$("gNo").onclick=function(){gAnswer(0)};
+function grillUndo(){var G=S.grill;if(S.phase!=="play"||!G.ans.length)return;var a=G.ans.pop();G.ask--;if(a){G.ok--;G.pts-=P(G.ask%4)}if(tLeft>0)runTimer(grillEnd);renderGrill();store.set()}
+function grillEnd(){stopTimer();var G=S.grill,i=gPlayers()[G.i];S.phase="sum";
+ if(G.tie){S.players[i].tb=(G.pts)}else{S.players[i].score=G.pts}
+ S.history.push({g:1,i:i,ok:G.ok,ask:G.ask,pts:G.pts});renderGrill();store.set()}
+$("gNext").onclick=function(){var G=S.grill;if(G.i+1>=gPlayers().length){S.running=false;store.set();return finishGrill()}
+ G.i++;G.ok=0;G.ask=0;G.pts=0;G.ans=[];S.phase="ready";tTotal=gtime();tLeft=tTotal;drawTimer();renderGrill();store.set()};
+function finishGrill(){var G=S.grill;
+ if(G.tie){var best=Math.max.apply(null,G.tie.map(function(i){return S.players[i].tb||0}));var w=G.tie.filter(function(i){return (S.players[i].tb||0)===best});
+  if(w.length===1)return winner(w,"Vant omgrillingen med "+best+" poeng");G.tie=w;return winner(w)}
+ finishByScore()}
+$("tieBtn").onclick=function(){var G=S.grill;G.tie=G.tie||tied();G.i=0;G.ok=0;G.ask=0;G.pts=0;G.ans=[];S.running=true;S.phase="ready";tTotal=gtime();tLeft=tTotal;enterGame()};
+function tied(){var best=Math.max.apply(null,S.players.map(function(p){return p.score}));return S.players.map(function(p,i){return i}).filter(function(i){return S.players[i].score===best})}
+
+/* ---------- timer ---------- */
+var tLeft=0,tTotal=45,tId=null,C=326.7,actx=null,onEnd=null;
+function fmt(s){return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2)}
+function drawTimer(){var tm=$("timer");$("tTxt").textContent=tLeft>0?fmt(tLeft):"Tiden er ute!";$("ring").style.strokeDashoffset=String(C*(1-tLeft/(tTotal||1)));$("ring").style.stroke=tLeft<=5&&tLeft>0?"#B3202A":"#1E4A2D";tm.classList.toggle("low",tLeft<=5&&tLeft>0);tm.classList.toggle("done",tLeft<=0)}
+function stopTimer(){if(tId){clearInterval(tId);tId=null}}
+function beep(f,d){try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.frequency.value=f;o.connect(g);g.connect(actx.destination);g.gain.setValueAtTime(.25,actx.currentTime);g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+d);o.start();o.stop(actx.currentTime+d)}catch(e){}}
+function runTimer(cb){onEnd=cb||onEnd;stopTimer();beep(660,.08);drawTimer();
+ tId=setInterval(function(){tLeft--;S.tLeft=tLeft;drawTimer();if(tLeft>0&&tLeft<=5)beep(880,.06);
+  if(tLeft<=0){stopTimer();S.tLeft=null;beep(330,.6);if(navigator.vibrate)navigator.vibrate([200,100,200]);onEnd&&onEnd()}},1000)}
+$("timer").addEventListener("click",function(){if(S.phase!=="play"||!tTotal)return;if(tId){stopTimer();$("tTxt").textContent="Pause"}else if(tLeft>0){runTimer()}});
+
+/* ---------- slutt ---------- */
+function finishByScore(){var best=Math.max.apply(null,S.players.map(function(p){return p.score}));var w=S.players.map(function(p,i){return i}).filter(function(i){return S.players[i].score===best});winner(w)}
+function winner(ws,sub){stopTimer();show("winner");var tie=ws.length>1,w=S.players[ws[0]];
+ $("wIco").textContent=tie?"🤝":"🏆";
+ $("wName").textContent=tie?"Uavgjort!":w.name+" vant!";$("wName").style.color=tie?"var(--g)":w.color;
+ var info=S.cfg.type==="goal"?"Først til "+S.cfg.goal+" poeng · "+S.cards+" kort spilt":S.cfg.type==="marathon"?S.cards+" kort spilt":"Grillen · "+S.players.length+" spillere";
+ $("wTxt").textContent=sub||(tie?ws.map(function(i){return S.players[i].name}).join(" og ")+" står likt · "+info:info);
+ var order=S.players.slice().sort(function(a,b){return b.score-a.score});
+ $("final").innerHTML=order.map(function(p,r){return '<li><span class="rank">'+(r+1)+'</span><span class="dot" style="background:'+p.color+'"></span><span class="name" style="flex:1">'+esc(p.name)+'</span><span class="pts">'+p.score+'</span></li>'}).join("");
+ $("tieBtn").classList.toggle("hidden",!(tie&&S.cfg.type==="grill"));
+ if(!tie){confetti();beep(523,.15);setTimeout(function(){beep(659,.15)},160);setTimeout(function(){beep(784,.35)},320)}}
+function confetti(){var box=$("confetti");box.innerHTML="";for(var k=0;k<70;k++){var c=document.createElement("i");c.style.left=Math.random()*100+"vw";c.style.background=COLORS[k%COLORS.length];c.style.animationDuration=(2+Math.random()*2)+"s";c.style.animationDelay=Math.random()*.6+"s";box.appendChild(c)}setTimeout(function(){box.innerHTML=""},4500)}
+$("again").onclick=start;
+$("newGame").onclick=function(){S.running=false;store.clear();show("modes")};
+$("btnTv").onclick=function(){document.body.classList.toggle("tv");this.textContent=document.body.classList.contains("tv")?"Tilbake":"Storskjerm"};
+var armT=null;
+function quit(){clearTimeout(armT);$("btnMenu").textContent="Avslutt";$("btnMenu").classList.remove("arm");stopTimer();S.running=false;S.phase="ready";S.cur=[];S.tLeft=null;store.clear();pickMode(S.mode)}
+$("btnMenu").onclick=function(){var b=$("btnMenu");
+ if(!S.running||b.classList.contains("arm"))return quit();
+ b.classList.add("arm");b.textContent="Trykk igjen for å avslutte";
+ armT=setTimeout(function(){b.classList.remove("arm");b.textContent="Avslutt"},4000)};
+
+/* ---------- oppstart ---------- */
+renderModes();
+var saved=store.get();
+if(saved&&saved.running&&saved.mode&&MODES[saved.mode]){S=saved;$("mIco").textContent=MODES[S.mode].ico;$("mName").textContent=MODES[S.mode].name;enterGame();if(S.phase==="play"&&tLeft>0&&tTotal)runTimer(S.cfg.type==="grill"?grillEnd:endTurn)}
+else show("modes");
+})();
+</script>
+</body>
+</html>
