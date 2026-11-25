@@ -217,7 +217,7 @@ body.disp .app,body.disp footer,body.disp .confetti{display:none!important}
 .tvhint{position:fixed;right:2vw;bottom:1.5vh;font-size:1.6vh;color:rgba(247,241,227,.45)}
 .tvsteps{text-align:left;margin:10px 0 0;padding-left:20px;line-height:1.5;font-size:.92rem}
 .tvsteps li{margin-bottom:6px}
-.tvcodebig{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:26vh;line-height:1;letter-spacing:.12em;color:#F7F1E3;margin:1vh 0}
+.tvcodebig{font-variant-numeric:lining-nums tabular-nums;font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:26vh;line-height:1;letter-spacing:.12em;color:#F7F1E3;margin:1vh 0}
 .tvsteps2{font-size:3vh;color:#e9dcb9;line-height:1.5;margin:0;padding:0;list-style:none}
 .tvsteps2 b{color:#F7F1E3}
 .tvcorner{position:fixed;left:2vw;bottom:1.5vh;font-size:1.7vh;color:rgba(247,241,227,.55);letter-spacing:.08em}
@@ -436,7 +436,7 @@ function renderSum(){var c=S.cfg,t=[];
  var fl=funOpts().filter(function(o){return c[o[0]]}).map(function(o){return o[1].replace(/^\S+ /,"")});if(fl.length)t.push("Ekstra moro: "+fl.join(", "));
  if(S.players.length===1&&(c.type==="marathon"||c.type==="grill")){var r=getRec(S.players[0].name);if(r!=null)t.push("Rekorden til "+S.players[0].name+": "+r+" poeng")}
  $("cfgSum").innerHTML=t.map(esc).join("<br>");
- var q=$("quick"),show=c.type!=="grill"&&c.type!=="coop"&&S.players.length!==1,fo=funOpts(),qh=show?chipGroup("steal","Stjel poenget – neste spiller kan svare hvis det blir feil",[[true,"På"],[false,"Av"]]):"";
+ var q=$("quick"),show=c.type!=="grill"&&c.type!=="coop"&&S.players.length!==1,fo=funOpts(),qh=show?chipGroup("steal","Stjel poenget – neste spiller kan stjele ett poeng hvis noe blir feil",[[true,"På"],[false,"Av"]]):"";
  fo=fo.filter(function(o){return modeFun().indexOf(o[0])>=0});if(betDef()&&NQ()===4)qh+=chipGroup("bet","🎯 Satsing før hvert kort",[[true,"På"],[false,"Av"]]);
  if(fo.length)qh+='<div class="opt"><label>Ekstra moro i denne modusen – trykk for å slå av og på</label><div class="chips" data-key="fun">'+fo.map(function(o){return '<button class="chip'+(c[o[0]]?" on":"")+'" data-v="'+o[0]+'" type="button">'+o[1]+'</button>'}).join("")+'</div>'+fo.filter(function(o){return c[o[0]]}).map(function(o){return '<div class="funhint"><b>'+o[1]+':</b> '+FUNTXT[o[0]]+'</div>'}).join("")+'</div>';
  q.innerHTML=qh;q.className=qh?"":"hidden"}
@@ -458,7 +458,7 @@ $("cfgBox").addEventListener("input",function(e){if(e.target.id==="goalCustom"){
 /* ---------- regler ---------- */
 var RULES='<h2 style="margin-top:0">Slik spiller dere Bibelquiz</h2><p>Hvert kort har fire spørsmål. Spørsmål 1 er det letteste. Den som har tur, svarer på så mange som mulig før tiden er ute. Den som sitter til venstre, trekker kortet og leser opp spørsmålene i rekkefølge. Svarene står på baksiden av kortet.</p><p>Trykk ✓ når svaret er riktig, og «Feil/pass» når det er feil eller spilleren vil hoppe over. Man kan ikke gå tilbake til et spørsmål. Trykk på klokka for å sette spillet på pause.</p>'+
  Object.keys(MODES).map(function(k){var m=MODES[k];return '<h3>'+m.ico+' '+m.name+'</h3><p>'+esc(m.who)+'</p>'}).join("")+
- '<h3>Satsing</h3><p>Når satsing er på, tipper spilleren før kortet leses hvor mange av de fire spørsmålene hen klarer. Klarer hen minst så mange, gir det like mange bonuspoeng. Klarer hen færre, trekkes 1 poeng fra turen. «Ingen» er alltid trygt.</p><h3>Ekstra moro</h3><p>Slås av og på på oppsettsiden.</p><p><b>🪨 Davids slynge:</b> Den som ligger sist, kan én gang per spill lade slyngen før turen. Klarer hen alle spørsmålene på kortet, stjeler hen 3 poeng fra lederen (2 i Nybegynner).</p><p><b>🎲 Overraskelser:</b> Omtrent hver tredje tur dukker det opp en overraskelse: dobbel poeng, halv tid, ekstra tid, manna fra himmelen (+2) eller barmhjertighet (den som ligger sist, får 1 poeng).</p><p><b>⚡ Lynbonus:</b> Riktig svar innen 7 sekunder etter forrige trykk gir +1.</p><p><b>👑 Titler:</b> Poengene gir titler underveis: Gjeter, Fisker, Skriftlærd, Profet og Apostel.</p><h3>Stjel poenget</h3><p>Når stjeling er på, kan neste spiller eller lag svare på spørsmålene den forrige ikke fikk til. Hvert stjålne svar gir 1 poeng.</p><h3>Kortene</h3><p>Ta alltid det øverste kortet i bunken. Brukte kort legges i en egen bunke. Appen teller hvor mange kort dere har spilt.</p><button class="btn block" id="rulesClose" type="button" style="margin-top:16px">Lukk</button>';
+ '<h3>Satsing</h3><p>Når satsing er på, tipper spilleren før kortet leses hvor mange av de fire spørsmålene hen klarer. Klarer hen minst så mange, gir det like mange bonuspoeng. Klarer hen færre, trekkes 1 poeng fra turen. «Ingen» er alltid trygt.</p><h3>Ekstra moro</h3><p>Slås av og på på oppsettsiden.</p><p><b>🪨 Davids slynge:</b> Den som ligger sist, kan én gang per spill lade slyngen før turen. Klarer hen alle spørsmålene på kortet, stjeler hen 3 poeng fra lederen (2 i Nybegynner).</p><p><b>🎲 Overraskelser:</b> Omtrent hver tredje tur dukker det opp en overraskelse: dobbel poeng, halv tid, ekstra tid, manna fra himmelen (+2) eller barmhjertighet (den som ligger sist, får 1 poeng).</p><p><b>⚡ Lynbonus:</b> Riktig svar innen 7 sekunder etter forrige trykk gir +1.</p><p><b>👑 Titler:</b> Poengene gir titler underveis: Gjeter, Fisker, Skriftlærd, Profet og Apostel.</p><h3>Stjel poenget</h3><p>Når stjeling er på, kan neste spiller eller lag stjele ett poeng etter hver tur: velg ett av spørsmålene den forrige ikke fikk til, og svar på det. Riktig svar gir 1 poeng.</p><h3>Kortene</h3><p>Ta alltid det øverste kortet i bunken. Brukte kort legges i en egen bunke. Appen teller hvor mange kort dere har spilt.</p><button class="btn block" id="rulesClose" type="button" style="margin-top:16px">Lukk</button>';
 $("btnRules").onclick=function(){$("rulesBody").innerHTML=RULES;$("rules").classList.remove("hidden")};
 $("rules").addEventListener("click",function(e){if(e.target.id==="rules"||e.target.id==="rulesClose")$("rules").classList.add("hidden")});
 
@@ -528,7 +528,7 @@ function renderGame(){var cur=S.players[S.turn],ph=S.phase;
   var wrong=[];S.cur.forEach(function(a,k){if(!a)wrong.push(k)});
   var canSteal=S.cfg.steal&&wrong.length&&S.players.length>1&&!lastCard();
   $("steal").classList.toggle("hidden",!canSteal);
-  if(canSteal)$("steal").innerHTML='<h3>Stjel poenget</h3><div class="hint">'+esc(nx.name)+(NQ()===1?' kan svare på spørsmålet. Riktig svar gir 1 poeng.':' kan svare på spørsmålene som ble feil. Hvert riktig svar gir 1 poeng.')+'</div>'+wrong.map(function(k){var on=S.stolen.indexOf(k)>=0;return '<button class="sbtn'+(on?" on":"")+'" data-s="'+k+'" type="button"><span>Spørsmål '+(k+1)+'</span><span>'+(on?"Stjålet +1 ✓":"Riktig svar?")+'</span></button>'}).join("");
+  if(canSteal)$("steal").innerHTML='<h3>Stjel poenget</h3><div class="hint">'+esc(nx.name)+(NQ()===1?' kan svare på spørsmålet. Riktig svar gir 1 poeng.':' kan stjele ett poeng: velg ett av spørsmålene som ble feil, og svar på det. Riktig svar gir 1 poeng.')+'</div>'+wrong.map(function(k){var on=S.stolen.indexOf(k)>=0;return '<button class="sbtn'+(on?" on":"")+'" data-s="'+k+'" type="button"><span>Spørsmål '+(k+1)+'</span><span>'+(on?"Stjålet +1 ✓":"Riktig svar?")+'</span></button>'}).join("");
   $("nextBtn").textContent=lastCard()?"Se resultatet":S.players.length===1?"Neste kort":"Neste: "+nx.name}
  renderBoard();$("undo").disabled=!(S.cur.length||S.history.length)}
 function lastCard(){return totalCards()>0&&S.cards+1>=totalCards()}
@@ -545,7 +545,7 @@ function endTurn(won){stopTimer();S.answered=S.cur.length;while(S.cur.length<NQ(
  S.phase="sum";renderGame();store.set()}
 $("sling").addEventListener("click",function(e){if(!e.target.closest("#slingBtn")||S.phase!=="ready")return;S.sling=!S.sling;renderGame();store.set()});
 $("bet").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b||S.phase!=="ready")return;S.bet=+b.dataset.b;renderGame();store.set()});
-$("steal").addEventListener("click",function(e){var b=e.target.closest(".sbtn");if(!b)return;var k=+b.dataset.s,i=S.stolen.indexOf(k);if(i>=0)S.stolen.splice(i,1);else S.stolen.push(k);renderGame();store.set()});
+$("steal").addEventListener("click",function(e){var b=e.target.closest(".sbtn");if(!b)return;var k=+b.dataset.s,i=S.stolen.indexOf(k);S.stolen=i>=0?[]:[k];renderGame();store.set()});
 $("nextBtn").onclick=function(){var p=S.players[S.turn],pts=curPts(),j=nextIdx(),sn=S.stolen.length,sl=null,mc=null;
  if(S.sling){var g=leaderIdx(S.turn);sl={g:g,amt:0};if(S.cur.every(Boolean)){sl.amt=Math.min(SL(),S.players[g].score);S.players[g].score-=sl.amt}}
  p.score+=pts+(sl?sl.amt:0);if(sn)S.players[j].score+=sn;if(S.sling)p.sl=true;
@@ -780,7 +780,7 @@ function renderTv(d){var el=$("tv"),top;
   if(betOn()&&S.bet&&ph!=="sum")inf+='<div class="bt">🎯 Satser på '+S.bet+' riktige</div>';
   if(S.sling&&ph!=="sum")inf+='<div class="sl">🪨 Davids slynge er ladd mot '+esc(S.players[leaderIdx(S.turn)].name)+'!</div>';
   if(ph==="sum"){inf+='<div class="sm">'+esc(d.sum)+'</div>';var wr=[];S.cur.forEach(function(a,k){if(!a)wr.push(k+1)});
-   if(S.cfg.steal&&wr.length&&S.players.length>1&&S.cfg.type!=="coop"&&!lastCard())inf+='<div class="st">🦊 Stjel poenget: '+esc(S.players[nextIdx()].name)+' kan svare på spørsmål '+wr.join(", ")+(S.stolen.length?' · stjålet '+S.stolen.length:'')+'</div>'}
+   if(S.cfg.steal&&wr.length&&S.players.length>1&&S.cfg.type!=="coop"&&!lastCard())inf+='<div class="st">🦊 Stjel poenget: '+esc(S.players[nextIdx()].name)+' kan stjele ett poeng – velg spørsmål '+wr.join(" eller ")+(S.stolen.length?' · stjålet '+S.stolen.length:'')+'</div>'}
   if(inf)h+='<div class="tvinfo">'+inf+'</div>'}
  el.innerHTML=top+'<div class="tvturn">'+h+'</div><div class="tvboard"><h2>Poengliste</h2><ul>'+tvBoard()+'</ul></div>'}
 var TV={code:null,err:null,ctrl:false,last:null};
